@@ -1,0 +1,60 @@
+GIT -> 형상관리 프로그램
+GITHUB -> GIT으로 관리되고 있는 저장소를 GITHUB 서버로 올려서 관리
+
+Repository --> 저장소, 버전관리할 파일 저장소
+
+Working Tree --> 형상으로 만들어지기 전 단계(현재 작업중인 파일)
+
+Staging Area --> 형상으로 만드려는 파일 (git add)
+
+pwd: 경로
+
+ls: 파일 목록
+
+mkdir git_test: git_test폴더 생성
+
+cd git_test: git_test들어가기
+
+git init: cd로 저장한 폴더를 저장소로 쓰겠음
+
+git config --global user.name "": 닉네임 설정
+
+git config --global user.email "": 이메일 설정
+
+git config --global user.name: 닉네임 확인
+
+git config --global user.email: 이메일 확인
+
+vi: interface 열기
+
+esc -> : 파일명 -> enter: 파일 저장
+
+cat 파일명: 파일 텍스트 출력
+
+clear: 파일창 청소
+
+git add *: working tree -> staging area
+
+git commit -m "메세지": 커밋
+
+git log: 작업목록 -> q: 나오기
+
+git checkout 아이디: 아이디는 git log에서 확인 
+
+git checkout master: 롤백
+
+git reset (--hard): 롤백
+
+git commit -am "메세지": 자동으로 트래킹 되던 파일 커밋(git add 필요없음)
+
+git branch: branch를 새로 만듬
+
+git branch: branch를 바꿈
+
+git push origin main: main은 branch 명임.
+
+git clone: 파일을 그대로 가져오기
+
+git pull origin main: main branch에 있던 데이터들을 땡겨옴
+
+git remote add origin [url 주소]: 저장소 추가
