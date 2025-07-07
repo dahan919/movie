@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>공지사항 작성</title>
+  <style>
+    body {
+      font-family: 'Malgun Gothic', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #f4f4b0;
+      color: #333;
+      padding: 15px 20px;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid black;
+    }
+    header h1 {
+      font-size: 22px;
+      margin: 5px 0;
+    }
+   
+    .container {
+      max-width: 480px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    input, textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #0074D9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>공지사항</h1>
+
+  </header>
+
+  <div class="container">
+    <form id="noticeForm">
+
+      <label for="title">제목</label>
+      <input type="text" id="title" name="title" placeholder="공지 제목 입력" required>
+
+      <label for="content">공지내용</label>
+      <textarea id="content" name="content" placeholder="공지 내용을 입력하세요" required></textarea>
+
+      
+      <label for="date">작성일자</label>
+      <input type="date" id="date" name="date" placeholder="작성일자 선택" required>
+
+      <button type="submit">저장</button>
+    </form>
+  </div>
+
+  <script>
+  document.getElementById('noticeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    const date = document.getElementById('date').value;
+
+    alert(`📌 저장된 내용\n\n제목: ${title}\n내용: ${content}\n작성일자: ${date}`);
+
+    // 저장 후 admin 페이지로 이동
+    window.location.href = "admin.html"; // 또는 "admin" 경로로도 가능
+  });
+</script>
+
+</body>
+</html>

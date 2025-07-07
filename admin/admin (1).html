@@ -1,126 +1,126 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지</title>
-    
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>관리자 페이지</title>
+  <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f1f1f1;
-        margin: 0;
-        padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
     }
 
     .container {
-        width: 80%;
-        margin: 0 auto;
-        padding-top: 30px;
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 30px;
     }
 
     .header {
-        text-align: center;
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-
-    .tabs {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .tab {
-        padding: 10px 20px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        margin-right: 10px;
-        cursor: pointer;
-        font-weight: bold;
-        background-color: #fffbcc;
-    }
-
-    .tab:hover {
-        background-color: #f4f4b0;
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
 
     .search-container {
-        text-align: center;
-        margin-bottom: 30px;
+      text-align: center;
+      margin-bottom: 30px;
     }
 
     .search-container input {
-        padding: 10px;
-        width: 250px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
     }
 
     .search-container button {
-        padding: 10px;
-        background-color: #ddd;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+      padding: 10px;
+      background-color: #ddd;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
     .search-container button:hover {
-        background-color: #bbb;
+      background-color: #bbb;
+    }
+
+    .tabs-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      background-color: #fffbcc;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      text-align: center;
+    }
+
+    .tab:hover {
+      background-color: #f4f4b0;
     }
 
     .tab-content {
-        display: none;
+      display: none;
     }
 
     ul {
-        padding: 0;
-        list-style-type: none;
-        margin: 0;
+      padding: 0;
+      list-style-type: none;
+      margin: 0;
     }
 
     li {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        margin: 5px 0;
-        padding: 10px;
-        border-radius: 5px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
     }
-
-    img {
-        width: 100px;
-        height: auto;
-    }
-</style>
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <div class="header">관리자 페이지</div>
+  <div class="container">
+    <div class="header">관리자 페이지</div>
 
-        <!-- 검색 영역 -->
-        <div class="search-container">
-            <input type="text" placeholder="검색..." />
-            <button>검색</button>
-        </div>
+    <div class="search-container">
+      <input type="text" placeholder="검색..." />
+      <button>검색</button>
+    </div>
 
-        <!-- 탭 영역 -->
-        <div class="tabs">
-            <div class="tab" onclick="showTab('member')">회원관리</div>
-            <div class="tab" onclick="showTab('content')">콘텐츠 관리</div>
-            <div class="tab" onclick="showTab('comment')">댓글 관리</div>
-            <div class="tab" onclick="showTab('notice')">공지사항 관리</div>
-        </div>
+    <div class="tabs-wrapper">
+      <div class="tabs">
+        <div class="tab" onclick="showTab('member')">회원관리</div>
+        <div class="tab" onclick="showTab('content')">콘텐츠 관리</div>
+        <div class="tab" onclick="showTab('comment')">댓글 관리</div>
+        <div class="tab" onclick="showTab('notice')">공지사항 관리</div>
+      </div>
+      <a href="notice.html" class="tab">쓰기</a>
+    </div>
 
-        <!-- 회원 관리 리스트 -->
+     <!-- 회원 관리 리스트 -->
         <div id="member" class="tab-content">
     <ul>
         <li>
             <strong>회원아이디:</strong> USR001 <br>
             <strong>회원명:</strong> 홍길동 <br>
-            <strong>주소:</strong> 서울시 강남구 <br>
+           
             <strong>연락처:</strong> 010-1234-5678 <br>
             <strong>전화번호:</strong> 02-123-4567 <br>
             <strong>가입일:</strong> 2021-05-01
@@ -128,7 +128,7 @@
         <li>
             <strong>회원아이디:</strong> USR002 <br>
             <strong>회원명:</strong> 김유신 <br>
-            <strong>주소:</strong> 부산시 해운대구 <br>
+          
             <strong>연락처:</strong> 010-2345-6789 <br>
             <strong>전화번호:</strong> 051-987-6543 <br>
             <strong>가입일:</strong> 2020-08-15
@@ -136,7 +136,7 @@
         <li>
             <strong>회원아이디:</strong> USR003 <br>
             <strong>회원명:</strong> 박지성 <br>
-            <strong>주소:</strong> 서울시 송파구 <br>
+            
             <strong>연락처:</strong> 010-3456-7890 <br>
             <strong>전화번호:</strong> 02-234-5678 <br>
             <strong>가입일:</strong> 2021-07-20
@@ -144,7 +144,7 @@
         <li>
             <strong>회원아이디:</strong> USR004 <br>
             <strong>회원명:</strong> 이효리 <br>
-            <strong>주소:</strong> 인천시 남구 <br>
+           
             <strong>연락처:</strong> 010-4567-8901 <br>
             <strong>전화번호:</strong> 032-123-4567 <br>
             <strong>가입일:</strong> 2021-06-05
@@ -152,7 +152,7 @@
         <li>
             <strong>회원아이디:</strong> USR005 <br>
             <strong>회원명:</strong> 정우성 <br>
-            <strong>주소:</strong> 경기도 수원시 <br>
+          
             <strong>연락처:</strong> 010-5678-9012 <br>
             <strong>전화번호:</strong> 031-234-5678 <br>
             <strong>가입일:</strong> 2021-04-10
@@ -160,7 +160,7 @@
         <li>
             <strong>회원아이디:</strong> USR006 <br>
             <strong>회원명:</strong> 김수현 <br>
-            <strong>주소:</strong> 서울시 마포구 <br>
+           
             <strong>연락처:</strong> 010-6789-0123 <br>
             <strong>전화번호:</strong> 02-345-6789 <br>
             <strong>가입일:</strong> 2021-02-15
@@ -168,7 +168,7 @@
         <li>
             <strong>회원아이디:</strong> USR007 <br>
             <strong>회원명:</strong> 송중기 <br>
-            <strong>주소:</strong> 대전시 유성구 <br>
+        
             <strong>연락처:</strong> 010-7890-1234 <br>
             <strong>전화번호:</strong> 042-123-4567 <br>
             <strong>가입일:</strong> 2021-03-05
@@ -176,7 +176,7 @@
         <li>
             <strong>회원아이디:</strong> USR008 <br>
             <strong>회원명:</strong> 전지현 <br>
-            <strong>주소:</strong> 서울시 강서구 <br>
+            
             <strong>연락처:</strong> 010-8901-2345 <br>
             <strong>전화번호:</strong> 02-456-7890 <br>
             <strong>가입일:</strong> 2021-05-30
@@ -184,7 +184,7 @@
         <li>
             <strong>회원아이디:</strong> USR009 <br>
             <strong>회원명:</strong> 김태희 <br>
-            <strong>주소:</strong> 경기도 성남시 <br>
+          
             <strong>연락처:</strong> 010-9012-3456 <br>
             <strong>전화번호:</strong> 031-987-6543 <br>
             <strong>가입일:</strong> 2021-01-25
@@ -192,7 +192,7 @@
         <li>
             <strong>회원아이디:</strong> USR010 <br>
             <strong>회원명:</strong> 이준기 <br>
-            <strong>주소:</strong> 서울시 종로구 <br>
+            
             <strong>연락처:</strong> 010-0123-4567 <br>
             <strong>전화번호:</strong> 02-567-8901 <br>
             <strong>가입일:</strong> 2021-06-30
@@ -382,19 +382,20 @@
 
     </div>
 
-    <script>
-        window.onload = function () {
-            showTab('member')        
-        }
-        function showTab(tabName) {
-            // 모든 탭의 내용을 숨기기
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.style.display = 'none');
+  <script>
+    // 기본 탭 표시
+    window.onload = function () {
+      showTab('member');
+    };
 
-            // 선택된 탭의 내용을 보여주기
-            const activeTab = document.getElementById(tabName);
-            activeTab.style.display = 'block';
-        }
-    </script>
+    // 탭 전환 함수
+    function showTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.style.display = 'none');
+
+      const target = document.getElementById(tabName);
+      if (target) target.style.display = 'block';
+    }
+  </script>
 </body>
 </html>
