@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+
+    .header {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .tab {
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: #fffbcc;
+    }
+
+    .tab:hover {
+        background-color: #f4f4b0;
+    }
+
+    .search-container {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .search-container input {
+        padding: 10px;
+        width: 250px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .search-container button {
+        padding: 10px;
+        background-color: #ddd;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .search-container button:hover {
+        background-color: #bbb;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+        margin: 0;
+    }
+
+    li {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    img {
+        width: 100px;
+        height: auto;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">관리자 페이지</div>
+
+        <!-- 검색 영역 -->
+        <div class="search-container">
+            <input type="text" placeholder="검색..." />
+            <button>검색</button>
+        </div>
+
+        <!-- 탭 영역 -->
+        <div class="tabs">
+            <div class="tab" onclick="showTab('member')">회원관리</div>
+            <div class="tab" onclick="showTab('content')">콘텐츠 관리</div>
+            <div class="tab" onclick="showTab('comment')">댓글 관리</div>
+            <div class="tab" onclick="showTab('notice')">공지사항 관리</div>
+        </div>
+
+        <!-- 회원 관리 리스트 -->
+        <div id="member" class="tab-content">
+    <ul>
+        <li>
+            <strong>회원아이디:</strong> USR001 <br>
+            <strong>회원명:</strong> 홍길동 <br>
+            <strong>주소:</strong> 서울시 강남구 <br>
+            <strong>연락처:</strong> 010-1234-5678 <br>
+            <strong>전화번호:</strong> 02-123-4567 <br>
+            <strong>가입일:</strong> 2021-05-01
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR002 <br>
+            <strong>회원명:</strong> 김유신 <br>
+            <strong>주소:</strong> 부산시 해운대구 <br>
+            <strong>연락처:</strong> 010-2345-6789 <br>
+            <strong>전화번호:</strong> 051-987-6543 <br>
+            <strong>가입일:</strong> 2020-08-15
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR003 <br>
+            <strong>회원명:</strong> 박지성 <br>
+            <strong>주소:</strong> 서울시 송파구 <br>
+            <strong>연락처:</strong> 010-3456-7890 <br>
+            <strong>전화번호:</strong> 02-234-5678 <br>
+            <strong>가입일:</strong> 2021-07-20
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR004 <br>
+            <strong>회원명:</strong> 이효리 <br>
+            <strong>주소:</strong> 인천시 남구 <br>
+            <strong>연락처:</strong> 010-4567-8901 <br>
+            <strong>전화번호:</strong> 032-123-4567 <br>
+            <strong>가입일:</strong> 2021-06-05
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR005 <br>
+            <strong>회원명:</strong> 정우성 <br>
+            <strong>주소:</strong> 경기도 수원시 <br>
+            <strong>연락처:</strong> 010-5678-9012 <br>
+            <strong>전화번호:</strong> 031-234-5678 <br>
+            <strong>가입일:</strong> 2021-04-10
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR006 <br>
+            <strong>회원명:</strong> 김수현 <br>
+            <strong>주소:</strong> 서울시 마포구 <br>
+            <strong>연락처:</strong> 010-6789-0123 <br>
+            <strong>전화번호:</strong> 02-345-6789 <br>
+            <strong>가입일:</strong> 2021-02-15
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR007 <br>
+            <strong>회원명:</strong> 송중기 <br>
+            <strong>주소:</strong> 대전시 유성구 <br>
+            <strong>연락처:</strong> 010-7890-1234 <br>
+            <strong>전화번호:</strong> 042-123-4567 <br>
+            <strong>가입일:</strong> 2021-03-05
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR008 <br>
+            <strong>회원명:</strong> 전지현 <br>
+            <strong>주소:</strong> 서울시 강서구 <br>
+            <strong>연락처:</strong> 010-8901-2345 <br>
+            <strong>전화번호:</strong> 02-456-7890 <br>
+            <strong>가입일:</strong> 2021-05-30
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR009 <br>
+            <strong>회원명:</strong> 김태희 <br>
+            <strong>주소:</strong> 경기도 성남시 <br>
+            <strong>연락처:</strong> 010-9012-3456 <br>
+            <strong>전화번호:</strong> 031-987-6543 <br>
+            <strong>가입일:</strong> 2021-01-25
+        </li>
+        <li>
+            <strong>회원아이디:</strong> USR010 <br>
+            <strong>회원명:</strong> 이준기 <br>
+            <strong>주소:</strong> 서울시 종로구 <br>
+            <strong>연락처:</strong> 010-0123-4567 <br>
+            <strong>전화번호:</strong> 02-567-8901 <br>
+            <strong>가입일:</strong> 2021-06-30
+        </li>
+    </ul>
+</div>
+
+
+        <!-- 콘텐츠 관리 리스트 -->
+        <div id="content" class="tab-content" style="display:none;">
+            <ul>
+                <li>
+                    <strong>Movie Title:</strong> 명량 <br>
+                    <strong>Description:</strong> 이순신 장군의 명량해전을 다룬 실화 영화. <br>
+                    <strong>Actors:</strong> 최민식, 조진웅, 류승룡 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="명량" width="100"><br>
+                    <strong>등록일:</strong> 2021-06-30
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 괴물 <br>
+                    <strong>Description:</strong> 서울에서 발생한 괴물의 이야기를 다룬 영화. <br>
+                    <strong>Actors:</strong> 송강호, 변희봉, 박해일 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="괴물" width="100"><br>
+                    <strong>등록일:</strong> 2020-05-20
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 어벤져스: 엔드게임 <br>
+                    <strong>Description:</strong> 마블의 슈퍼히어로들이 모여 싸우는 영화. <br>
+                    <strong>Actors:</strong> 로버트 다우니 주니어, 크리스 헴스워스, 스칼렛 조핸슨 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="어벤져스" width="100"><br>
+                    <strong>등록일:</strong> 2020-11-15
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 기생충 <br>
+                    <strong>Description:</strong> 상류층과 하류층의 갈등을 그린 영화. <br>
+                    <strong>Actors:</strong> 송강호, 박소담, 이선균 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="기생충" width="100"><br>
+                    <strong>등록일:</strong> 2021-03-22
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 겨울왕국 2 <br>
+                    <strong>Description:</strong> 엘사와 안나의 새로운 모험을 그린 애니메이션. <br>
+                    <strong>Actors:</strong> 크리스틴 벨, 이디나 멘젤, 조시 개드 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="겨울왕국" width="100"><br>
+                    <strong>등록일:</strong> 2020-12-10
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 조커 <br>
+                    <strong>Description:</strong> 사회에서 소외된 한 남자의 이야기를 다룬 영화. <br>
+                    <strong>Actors:</strong> 호아킨 피닉스, 로버트 드니로, 재시카 체스틴 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="조커" width="100"><br>
+                    <strong>등록일:</strong> 2021-04-05
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 인터스텔라 <br>
+                    <strong>Description:</strong> 시간과 공간을 넘나드는 우주 여행 이야기. <br>
+                    <strong>Actors:</strong> 매튜 매코너히, 앤 해서웨이, 제시카 차스틴 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="인터스텔라" width="100"><br>
+                    <strong>등록일:</strong> 2021-05-12
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 토이 스토리 4 <br>
+                    <strong>Description:</strong> 장난감들의 새로운 모험. <br>
+                    <strong>Actors:</strong> 톰 행크스, 팀 알렌, 안디 서키스 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="토이 스토리" width="100"><br>
+                    <strong>등록일:</strong> 2020-09-08
+                </li>
+                <li>
+                    <strong>Movie Title:</strong> 라라랜드 <br>
+                    <strong>Description:</strong> 꿈을 쫓는 두 사람의 사랑 이야기. <br>
+                    <strong>Actors:</strong> 라이언 고슬링, 엠마 스톤, 존 레전드 <br>
+                    <strong>Image:</strong> <img src="img/m.webp" alt="라라랜드" width="100"><br>
+                    <strong>등록일:</strong> 2020-04-25
+                </li>
+            </ul>
+        </div>
+
+        <div id="comment" class="tab-content" style="display:none;">
+            <ul>
+                <li>
+                    <strong>댓글내용:</strong> 이 영화 정말 재미있어요! <br>
+                    <strong>등록일:</strong> 2021-07-01 <br>
+                    <strong>등록자:</strong> 홍길동
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 조금 지루했지만 볼만한 영화였습니다. <br>
+                    <strong>등록일:</strong> 2021-07-02 <br>
+                    <strong>등록자:</strong> 김유신
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 최고의 영화! 추천합니다. <br>
+                    <strong>등록일:</strong> 2021-07-03 <br>
+                    <strong>등록자:</strong> 박지성
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 너무 감동적이었어요. <br>
+                    <strong>등록일:</strong> 2021-07-04 <br>
+                    <strong>등록자:</strong> 이효리
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 영화의 전개가 매우 예측 가능했어요. <br>
+                    <strong>등록일:</strong> 2021-07-05 <br>
+                    <strong>등록자:</strong> 정우성
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 연기력이 정말 훌륭했습니다. <br>
+                    <strong>등록일:</strong> 2021-07-06 <br>
+                    <strong>등록자:</strong> 김수현
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 비주얼이 너무 좋았어요. <br>
+                    <strong>등록일:</strong> 2021-07-07 <br>
+                    <strong>등록자:</strong> 송중기
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 생각보다 흥미롭지 않았어요. <br>
+                    <strong>등록일:</strong> 2021-07-08 <br>
+                    <strong>등록자:</strong> 전지현
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 오랜만에 재밌게 봤습니다. <br>
+                    <strong>등록일:</strong> 2021-07-09 <br>
+                    <strong>등록자:</strong> 김태희
+                </li>
+                <li>
+                    <strong>댓글내용:</strong> 추천합니다. <br>
+                    <strong>등록일:</strong> 2021-07-10 <br>
+                    <strong>등록자:</strong> 이준기
+                </li>
+            </ul>
+        </div>
+
+        <div id="notice" class="tab-content" style="display:none;">
+            <ul>
+                <li>
+                    <strong>공지사항 종류:</strong> 시스템 점검 <br>
+                    <strong>내용:</strong> 2021년 8월 1일 오전 10시부터 12시까지 시스템 점검이 있습니다. <br>
+                    <strong>등록일:</strong> 2021-07-25
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 신규 서비스 런칭 <br>
+                    <strong>내용:</strong> 새로운 영화 스트리밍 서비스를 2021년 9월 1일부터 시작합니다. <br>
+                    <strong>등록일:</strong> 2021-07-30
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 회원 정보 변경 <br>
+                    <strong>내용:</strong> 회원 정보 변경은 2021년 8월 15일부터 가능합니다. <br>
+                    <strong>등록일:</strong> 2021-08-01
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 사이트 리뉴얼 <br>
+                    <strong>내용:</strong> 2021년 9월 1일, 사이트가 리뉴얼됩니다. <br>
+                    <strong>등록일:</strong> 2021-07-31
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 휴무 안내 <br>
+                    <strong>내용:</strong> 2021년 12월 25일, 회사가 휴무입니다. <br>
+                    <strong>등록일:</strong> 2021-07-15
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 서비스 점검 <br>
+                    <strong>내용:</strong> 2021년 10월 10일, 2시간 동안 서비스 점검이 진행됩니다. <br>
+                    <strong>등록일:</strong> 2021-08-20
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 앱 업데이트 <br>
+                    <strong>내용:</strong> 새로운 버전의 앱이 출시되었습니다. <br>
+                    <strong>등록일:</strong> 2021-07-10
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 서버 장애 <br>
+                    <strong>내용:</strong> 2021년 7월 20일, 서버 장애가 발생하여 서비스가 잠시 중단되었습니다. <br>
+                    <strong>등록일:</strong> 2021-07-20
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 영화 출시 <br>
+                    <strong>내용:</strong> 2021년 8월 1일, 영화 "히어로"가 출시됩니다. <br>
+                    <strong>등록일:</strong> 2021-07-12
+                </li>
+                <li>
+                    <strong>공지사항 종류:</strong> 서버 점검 <br>
+                    <strong>내용:</strong> 2021년 9월 15일, 서버 점검이 예정되어 있습니다. <br>
+                    <strong>등록일:</strong> 2021-08-01
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function () {
+            showTab('member')        
+        }
+        function showTab(tabName) {
+            // 모든 탭의 내용을 숨기기
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.style.display = 'none');
+
+            // 선택된 탭의 내용을 보여주기
+            const activeTab = document.getElementById(tabName);
+            activeTab.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
