@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>우리가 뽑은 영화</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: black;
+        margin: 0;
+        padding: 0;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
+
+      nav a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .container {
+        padding: 30px 50px;
+        min-width: 1400px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      .movie-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 40px;
+        justify-content: center;
+      }
+
+      .movie-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+        max-width: 340px;
+        width: 100%;
+      }
+
+      .movie-card:hover {
+        transform: scale(1.03);
+      }
+
+      .movie-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .movie-card h3 {
+        margin-top: 10px;
+        font-size: 30px;
+      }
+
+      @media (max-width: 900px) {
+        .movie-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .movie-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* 모달 스타일 */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 30px;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        text-align: left;
+        position: relative;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+
+      .modal-content h2 {
+        margin-top: 0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #999;
+      }
+
+      #detailBtn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #f3e7c7;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      #detailBtn:hover {
+        background-color: #e0d1a6;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>대한민국 평점 사이트</h1>
+      <nav>
+        <a href="#">홈</a>
+        <a href="#">영화</a>
+        <a href="#">드라마</a>
+        <a href="#">웹툰</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2>대한민국에서 PICK 한 영화</h2>
+      <div class="movie-grid">
+        <div class="movie-card" data-title="파묘">
+          <img src="img/p.webp" alt="파묘" />
+          <h3>파묘</h3>
+        </div>
+        <div class="movie-card" data-title="명량">
+          <img src="img/m.webp" alt="명량" />
+          <h3>명량</h3>
+        </div>
+        <div class="movie-card" data-title="바람과 함께 사라지다">
+          <img src="img/wind.webp" alt="바람과 함께 사라지다" />
+          <h3>바람과 함께 사라지다</h3>
+        </div>
+        <div class="movie-card" data-title="괴물">
+          <img src="img/mo.webp" alt="괴물" />
+          <h3>괴물</h3>
+        </div>
+        <div class="movie-card" data-title="위플래쉬">
+          <img src="img/wi.webp" alt="위플래쉬" />
+          <h3>위플래쉬</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 -->
+    <div class="modal" id="movieModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle">영화 제목</h2>
+        <p id="modalDesc">줄거리</p>
+        <p id="modalCast">출연진</p>
+        <button id="detailBtn">상세보기</button>
+      </div>
+    </div>
+
+    <script>
+      const movieData = {
+        파묘: {
+          desc: "죽은 자의 묘를 파헤치며 벌어지는 이야기.",
+          cast: "최민식, 김고은, 유재명",
+        },
+        명량: {
+          desc: "이순신 장군의 명량해전을 다룬 실화 영화.",
+          cast: "최민식, 조진웅, 류승룡",
+        },
+        "바람과 함께 사라지다": {
+          desc: "빙과 창고 금괴를 훔치려는 도둑들의 작전극.",
+          cast: "차태현, 오지호, 민효린",
+        },
+        괴물: {
+          desc: "한 아이의 죽음을 둘러싼 진실을 좇는 이야기.",
+          cast: "안도 사쿠라, 나가야마 에이타",
+        },
+        위플래쉬: {
+          desc: "재즈 드러머를 꿈꾸는 청년이 광기 어린 스승과의 극한 훈련 속에서 한계와 천재성 사이를 넘나들며 성장해가는 이야기.",
+          cast: "마일즈 텔러, J.K. 시몬스, 멜리사 베노이스트, 폴 라이저",
+        },
+      };
+
+      let currentTitle = "";
+
+      document.querySelectorAll(".movie-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const title = card.dataset.title;
+          const data = movieData[title];
+          if (!data) return;
+          currentTitle = title;
+          document.getElementById("modalTitle").innerText = title;
+          document.getElementById("modalDesc").innerText = data.desc;
+          document.getElementById("modalCast").innerText =
+            "출연진: " + data.cast;
+          document.getElementById("movieModal").style.display = "flex";
+        });
+      });
+
+      document.getElementById("detailBtn").addEventListener("click", () => {
+        if (currentTitle) {
+          window.location.href = `detail.html?title=${encodeURIComponent(
+            currentTitle
+          )}`;
+        }
+      });
+
+      function closeModal() {
+        document.getElementById("movieModal").style.display = "none";
+      }
+
+      document.getElementById("movieModal").addEventListener("click", (e) => {
+        if (e.target.id === "movieModal") closeModal();
+      });
+    </script>
+  </body>
+</html>
