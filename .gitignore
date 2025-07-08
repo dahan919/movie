@@ -1,8 +1,4 @@
 .classpath
 .project
 .settings/
-<<<<<<< HEAD
-.build
-=======
-
->>>>>>> a7fc6b17a4f86a4791d07c5314021cc0eee0c1eb
+build/
