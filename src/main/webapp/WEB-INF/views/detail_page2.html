@@ -22,12 +22,12 @@
 
         /* 상단 메뉴 (수정된 부분) */
         .header-hero {
-            position: fixed; /* 화면에 고정 */
+            
             top: 0;
             left: 0;
             width: 100%;
-            height: 250px; /* 원하는 높이로 조절 */
-            overflow: hidden;
+            height: 100px; /* 원하는 높이로 조절 */
+         /*   overflow: hidden;*/
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,7 +37,7 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('./KakaoTalk_20250708_160525065.jpg'); /* 두 번째 이미지 사용 */
+            background-image: url('./back_img.jpg'); /* 두 번째 이미지 사용 */
             background-size: cover;
             background-position: center;
             filter: blur(10px) brightness(0.7); /* 블러 강도 및 어둡기 조절 */
@@ -223,29 +223,66 @@
             color: #FFC700;
             margin-left: 5px;
         }
+        .top-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.top-image-blur {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('./img/back_img.jpg'); /* 흐림용 배경 */
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px) brightness(0.7);
+  transform: scale(1.1); /* 블러 잘림 방지 */
+  z-index: 0;
+}
+
+.center-poster {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  height: 220px;
+  z-index: 1;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
 
     </style>
 </head>
 
 <body>
-    <header class="header-hero">
-        <div class="header-content">
-            <img src="./img/main_logo.png" alt="사이트 로고" class="main-logo"> 
-            <nav class="nav-menu">
-                <a href="#">홈</a>
-                <a href="#">영화</a>
-                <a href="#">드라마</a>
-                <a href="#">웹툰</a>
-            </nav>
+    <div class="top_menu">
+        <div class="menu_btn">
+          <a href="#">홈</a>
+          <a href="#">영화</a>
+          <a href="#"><img src="./img/로고 흰색.png" alt="" /></a>
+          <a href="#">드라마</a>
+          <a href="#">웹툰</a>
         </div>
-        <div class="login-info">로그아웃</div> 
-    </header>
+        <ul>
+          <li>${nickname} 님 환영합니다</li>
+          <li>|</li>
+          <li><a href="./login.html" class="logout">로그아웃</a></li>
+        </ul>
+      </div>
 
-    <main style="padding-top: 270px;"> 
+    <main > 
+        <div class="top-image-wrapper">
+  <div class="top-image-blur"></div>
+  <img class="center-poster" src="./img/whiplash.jpg" alt="대표 이미지">
+
+</div>
+
         <section class="movie-hero">
             <div class="movie-details-container">
                 <div class="poster-image">
-                    <img src="./img/whiplash.jpg" alt="위플래쉬 포스터">
+                    <img src="./img/whiplash.jpg" alt="위플래쉬 포스터" >
                 </div>
                 <div class="movie-info">
                     <h1>위플래쉬</h1>
@@ -438,7 +475,7 @@
 
         // '코멘트 더 보기' 버튼 클릭 이벤트
         moreCommentsBtn.addEventListener('click', () => {
-            window.location.href = 'comment4.html'; // comment2.html로 이동
+            window.location.href = 'comment4.html'; // comment4.html로 이동
         });
     </script>
     <script src="./top_menu.js"></script>
