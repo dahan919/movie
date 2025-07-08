@@ -1,0 +1,104 @@
+--Drop Table
+
+DROP TABLE USER_INFO;
+DROP TABLE commentary;
+DROP TABLE media;
+DROP TABLE webtoon;
+DROP TABLE drama;
+
+-- Constraint 확인
+SELECT * FROM USER_CONSTRAINTS;
+
+-- USER_INFO table 생성
+CREATE TABLE USER_INFO(
+    u_num VARCHAR2(10),
+    name VARCHAR2(300),
+    nickNm VARCHAR2(300),
+    passwd VARCHAR2(100),
+    id VARCHAR2(100),
+    ph_num VARCHAR2(50)
+);
+
+--주키 추가(u_num)
+ALTER TABLE USER_INFO ADD CONSTRAINT PK_U_NUM PRIMARY KEY (U_NUM);
+
+-- MEDIA table 생성
+CREATE TABLE MEDIA( 
+    m_num VARCHAR2(10),
+    score NUMBER(4,2),
+    opendate DATE,
+    story VARCHAR2(3000),
+    poster VARCHAR2(3000),
+    highlight VARCHAR2(3000),
+    title VARCHAR2(100)
+);
+
+-- 주키 추가(m_num)
+ALTER TABLE MEDIA ADD CONSTRAINT PK_M_NUM PRIMARY KEY (M_NUM);
+
+-- WEBTOON table 생성
+CREATE TABLE WEBTOON(
+    w_num VARCHAR2(10),
+    title VARCHAR2(200),
+    thumbnail VARCHAR2(3000),
+    synopsis VARCHAR2(3000),
+    starScoreAverage NUMBER(4,2),
+    readCount NUMBER(11),
+    linkUrl VARCHAR2(50),
+    writingAuthorName VARCHAR2(50)
+);
+
+-- 주키 추가(w_num)
+ALTER TABLE WEBTOON ADD CONSTRAINT PK_W_NUM PRIMARY KEY (W_NUM);
+
+-- drama table 생성
+CREATE TABLE DRAMA(
+    d_num VARCHAR2(10),
+    name VARCHAR2(200),
+    overview VARCHAR2(3000),
+    poster_path VARCHAR2(3000),
+    first_air_date DATE
+);
+
+--주키 추가
+ALTER TABLE DRAMA ADD CONSTRAINT PK_D_NUM PRIMARY KEY (D_NUM);
+
+-- Commentary table 추가
+CREATE TABLE COMMENTARY(
+    c_num VARCHAR2(10),
+    u_num VARCHAR2(10),
+    m_num VARCHAR2(10),
+    w_num VARCHAR2(10),
+    d_num VARCHAR2(10),
+    criticism VARCHAR2(150),
+    score_c NUMBER(2,1),
+    writedate DATE
+)
+
+--주키 추가(C_NUM)
+ALTER TABLE COMMENTARY ADD CONSTRAINT PK_C_NUM PRIMARY KEY (C_NUM);
+
+--외래키 추가(U_NUM, M_NUM, W_NUM, D_NUM)
+ALTER TABLE COMMENTARY ADD CONSTRAINT FK_U_NUM FOREIGN KEY (U_NUM) 
+REFERENCES USER_INFO(U_NUM);
+
+ALTER TABLE COMMENTARY ADD CONSTRAINT FK_M_NUM FOREIGN KEY (M_NUM)
+REFERENCES MEDIA(M_NUM);
+
+ALTER TABLE COMMENTARY ADD CONSTRAINT FK_W_NUM FOREIGN KEY (W_NUM)
+REFERENCES WEBTOON(W_NUM);
+
+ALTER TABLE COMMENTARY ADD CONSTRAINT FK_D_NUM FOREIGN KEY (D_NUM)
+REFERENCES DRAMA(D_NUM);
+
+
+--Announcement table 추가
+CREATE TABLE ANNOUNCEMENT(
+    a_num VARCHAR2(10),
+    a_title VARCHAR2(300),
+    a_content VARCHAR2(3000),
+    a_date DATE
+);
+
+--주키 추가
+ALTER TABLE ANNOUNCEMENT ADD CONSTRAINT PK_A_NUM PRIMARY KEY (A_NUM);
