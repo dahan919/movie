@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>상세 정보 페이지 - 위플래쉬</title>
+    <link rel="stylesheet" href="./menu.css" />
+    <link rel="stylesheet" href="./footer.css" />
+    <style>
+        /* 기본 초기화 */
+        * {
+            margin: 0; padding: 0; 
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #000000;
+            color: #333; /* 기본 글자색 설정 */
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* 상단 메뉴 (수정된 부분) */
+        .header-hero {
+            position: fixed; /* 화면에 고정 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 250px; /* 원하는 높이로 조절 */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0; /* 다른 콘텐츠보다 아래에 오도록 설정 */
+        }
+        .header-hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('./KakaoTalk_20250708_160525065.jpg'); /* 두 번째 이미지 사용 */
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px) brightness(0.7); /* 블러 강도 및 어둡기 조절 */
+            transform: scale(1.05); /* 약간 확대하여 블러 효과 부드럽게 */
+            z-index: -1; /* 가상 요소가 콘텐츠 아래에 오도록 */
+        }
+        .header-content {
+            position: relative; /* 콘텐츠가 블러 배경 위에 오도록 */
+            z-index: 1; /* 블러 배경보다 위에 오도록 */
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .main-logo {
+            width: 150px; /* 로고 크기 */
+            height: auto;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .nav-menu a {
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover {
+            color: #ffcc00;
+        }
+        .login-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+
+        /* 영화 상세 정보 (하단 포스터 배경) */
+        .movie-hero {
+            position: relative; padding: 60px 20px;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+            background-color: #555; /* 배경색으로 블러된 포스터가 보일 수 있도록 어둡게 */
+        }
+        .movie-hero::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('./img/whiplash_poster.jpg'); /* 첫 번째 이미지의 포스터 배경 */
+            background-size: cover; background-position: center;
+            filter: blur(15px) brightness(0.6); transform: scale(1.1);
+            z-index: -1;
+        }
+       
+        /* 상세 정보 컨테이너 */
+        .movie-details-container {
+            display: flex; gap: 40px; align-items: flex-start;
+            max-width: 900px; width: 100%; color: white;
+            padding: 20px; /* 내부 여백 추가 */
+            background-color: rgba(0, 0, 0, 0.4); /* 내용이 더 잘 보이도록 반투명 배경 추가 */
+            border-radius: 10px;
+        }
+        .poster-image img {
+            width: 250px; border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            margin-top: 0; /* 부모 컨테이너의 padding으로 대체 */
+        }
+        .movie-info { flex: 1; }
+        .movie-info h1 {
+            font-size: 40px; margin-bottom: 15px;
+        }
+        .movie-info .rating {
+            font-size: 18px; margin-bottom: 20px; font-weight: bold;
+        }
+        .movie-info .story {
+            font-size: 16px; line-height: 1.6;
+        }
+
+        /* 코멘트 섹션 */
+        .comments-section {
+            max-width: 900px; margin: 40px auto; padding: 20px;
+        }
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc; /* 구분선 추가 */
+            padding-bottom: 10px;
+        }
+        .comments-header h2 {
+            font-size: 24px;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .more-comments-btn {
+            background-color: #264961;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .more-comments-btn:hover {
+            background-color: #1c3647;
+        }
+        .more-comments-btn:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        .comment-form {
+            background-color: #E6E2D1; padding: 20px; border-radius: 8px;
+            display: flex; align-items: center; gap: 15px; margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px; /* 코멘트 리스트와 구분 */
+        }
+        .comment-form .form-rating {
+            display: flex; align-items: center; gap: 5px;
+            font-weight: bold; color: #333;
+        }
+        .comment-form .stars {
+            color: #FFC700; font-size: 20px;
+            cursor: pointer; /* 별점 클릭 가능하게 */
+        }
+        .comment-form .stars span { /* 개별 별 */
+            display: inline-block;
+        }
+        .comment-form input[type="text"] {
+            flex-grow: 1; border: none; padding: 12px 15px;
+            border-radius: 20px; font-size: 16px;
+            background-color: #f5f5f5;
+        }
+        .comment-form input[type="text"]::placeholder {
+            color: #888;
+        }
+        .comment-form .save-btn {
+            background-color: #264961; color: white; border: none;
+            padding: 12px 25px; border-radius: 20px;
+            font-size: 16px; font-weight: bold; cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .comment-form .save-btn:hover {
+            background-color: #1c3647;
+        }
+
+        .comment-list {
+            display: flex; flex-wrap: wrap; gap: 20px; padding: 0;
+            margin-bottom: 20px; /* 폼과 리스트 사이 간격 */
+        }
+        .comment-list li { 
+            background-color: #E6E2D1; 
+            border-radius: 8px; 
+            padding: 20px; 
+            flex: 1 1 calc((100% - 40px) / 3); 
+            min-width: 250px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+            border-bottom: none; 
+        }
+        
+        .comment-author {
+            font-weight: bold; margin-bottom: 10px;
+            color: rgb(38, 73, 97); font-size: 14px;
+        }
+        .comment-content {
+            font-size: 16px; color: #333;
+            white-space: nowrap; /* 한 줄로 표시 */
+            overflow: hidden; /* 넘치는 부분 숨김 */
+            text-overflow: ellipsis; /* ...으로 표시 */
+        }
+        .comment-content:hover { /* 툴팁 효과 */
+            overflow: visible;
+            white-space: normal;
+            word-break: break-all;
+        }
+        .comment-author .rating-stars {
+            color: #FFC700;
+            margin-left: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="header-hero">
+        <div class="header-content">
+            <img src="./img/main_logo.png" alt="사이트 로고" class="main-logo"> 
+            <nav class="nav-menu">
+                <a href="#">홈</a>
+                <a href="#">영화</a>
+                <a href="#">드라마</a>
+                <a href="#">웹툰</a>
+            </nav>
+        </div>
+        <div class="login-info">로그아웃</div> 
+    </header>
+
+    <main style="padding-top: 270px;"> 
+        <section class="movie-hero">
+            <div class="movie-details-container">
+                <div class="poster-image">
+                    <img src="./img/whiplash.jpg" alt="위플래쉬 포스터">
+                </div>
+                <div class="movie-info">
+                    <h1>위플래쉬</h1>
+                    <div class="rating">개봉일: 2015. 03. 12 평점: 4.0</div>
+                    <p class="story">
+                        뉴욕 최고의 음악 학교에 다니지만 특별히 주목받지 못하던 드러머 앤드류. 최고의 드러머를 꿈꾸며 연습에만 매달리던 어느 날, 최고의 실력자이자 최악의 폭군으로 불리는 플레처 교수에게 발탁된다. 
+                        그의 무자비한 방식은 학생의 한계를 시험하는 동시에, 앤드류를 성공과 광기의 갈림길로 이끈다...
+                        <br><br>
+                        "세상에서 제일 해로운 말이 뭔지 알아? '그 정도면 잘했어'야" 미친놈 vs 미친놈, 광기와 광기가 폭발!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="comments-section">
+            <div class="comments-header">
+                <h2>대한민국 코멘트</h2>
+                <button class="more-comments-btn">코멘트 더 보기</button> </div>
+            <ul class="comment-list"></ul>
+            <div class="comment-form-container"></div> 
+        </section>
+        
+    </main>
+
+    <script>
+        // 로컬 스토리지에 저장될 키 (여러 영화가 있다면 영화 ID 등으로 구분)
+        const LOCAL_STORAGE_KEY = 'whiplash_comments';
+
+        // 초기 코멘트 데이터 (로컬 스토리지에 데이터가 없을 경우 사용될 기본값)
+        const initialCommentData = [
+            { author: '대한', rating: 5.0, content: '간절함이 담긴 영화', timestamp: Date.now() - 5000 },
+            { author: '민국', rating: 3.5, content: '그 정도는 아닌듯?', timestamp: Date.now() - 4000 },
+            { author: '크라임', rating: 3.5, content: '아 어렵다', timestamp: Date.now() - 3000 },
+            { author: '철수', rating: 4.0, content: '정말 몰입감 넘치는 영화였습니다. 드럼 연주가 최고였어요!', timestamp: Date.now() - 2000 },
+            { author: '영희', rating: 2.5, content: '너무 폭력적인 장면이 많아서 불편했어요. 음악 영화인데 꼭 이렇게까지 해야 했나 싶네요.', timestamp: Date.now() - 1000 },
+        ];
+
+        // 로컬 스토리지에서 코멘트 데이터를 불러오거나, 없으면 초기 데이터 사용
+        let commentData = loadCommentsFromLocalStorage();
+
+        // 로컬 스토리지에서 코멘트를 불러오는 함수
+        function loadCommentsFromLocalStorage() {
+            const storedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (storedData) {
+                // JSON 문자열을 객체로 파싱
+                return JSON.parse(storedData);
+            }
+            // 데이터가 없으면 초기 데이터 저장 후 반환
+            saveCommentsToLocalStorage(initialCommentData);
+            return initialCommentData;
+        }
+
+        // 코멘트 데이터를 로컬 스토리지에 저장하는 함수
+        function saveCommentsToLocalStorage(comments) {
+            // 객체를 JSON 문자열로 변환하여 저장
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(comments));
+        }
+
+        const commentList = document.querySelector('.comment-list');
+        const moreCommentsBtn = document.querySelector('.more-comments-btn');
+        const commentFormContainer = document.querySelector('.comment-form-container');
+
+        /**
+         * 평점을 별 문자열로 변환합니다. (정수 별만 표시)
+         * @param {number} rating - 평점 (예: 3.5)
+         * @returns {string} 별 문자열 (예: "★★★")
+         */
+        function getStars(rating) {
+            const fullStars = Math.floor(rating);
+            return '★'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
+        }
+
+        /**
+         * 코멘트 요소를 생성하여 반환합니다.
+         * @param {object} comment - 코멘트 데이터 객체
+         * @returns {HTMLLIElement} 생성된 li 요소
+         */
+        function createCommentElement(comment) {
+            const li = document.createElement('li');
+            const displayContent = comment.content.length > 20 // 더 길게 표시
+                                   ? comment.content.substring(0, 20) + '...'
+                                   : comment.content;
+            
+            li.innerHTML = `
+                <div class="comment-author">
+                    '${comment.author}'님의 한줄평 
+                    <span class="rating-stars">${getStars(comment.rating)}</span> 
+                    (평점 : ${comment.rating.toFixed(1)})
+                </div>
+                <div class="comment-content" title="${comment.content}">${displayContent}</div>
+            `;
+            return li;
+        }
+
+        /**
+         * 코멘트 목록을 화면에 표시합니다. (최신순 3개 표시)
+         * @param {Array<object>} comments - 코멘트 데이터 배열
+         */
+        function displayComments(comments) {
+            commentList.innerHTML = ''; // 기존 목록 초기화
+            // 최신 코멘트부터 보여주기 위해 timestamp를 기준으로 정렬
+            const sortedComments = [...comments].sort((a, b) => b.timestamp - a.timestamp);
+            const commentsToDisplay = sortedComments.slice(0, 3); // 상위 3개만 선택
+            
+            commentsToDisplay.forEach(comment => {
+                commentList.appendChild(createCommentElement(comment));
+            });
+
+            // 코멘트가 3개 초과 시 '더보기' 버튼 활성화
+            if (comments.length > 3) {
+                moreCommentsBtn.disabled = false;
+            } else {
+                moreCommentsBtn.disabled = true;
+            }
+        }
+
+        // 코멘트 폼 생성 및 삽입
+        function createAndAppendCommentForm() {
+            const commentFormHTML = `
+                <div class="comment-form">
+                    <div class="form-rating">
+                        <span>평점 : </span>
+                        <div class="stars" data-current-rating="5">
+                            <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span data-value="4">★</span><span data-value="5">★</span>
+                        </div>
+                    </div>
+                    <input type="text" placeholder="코멘트 남기기">
+                    <button class="save-btn">저장</button>
+                </div>
+            `;
+            commentFormContainer.insertAdjacentHTML('beforeend', commentFormHTML);
+
+            // 별점 시스템 로직 (클릭 시 별점 변경)
+            const starsContainer = commentFormContainer.querySelector('.stars');
+            const starSpans = starsContainer.querySelectorAll('span');
+            let selectedRating = 5; // 초기 선택 평점
+
+            starSpans.forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    const value = parseInt(this.dataset.value);
+                    starSpans.forEach((s, i) => {
+                        s.textContent = i < value ? '★' : '☆';
+                    });
+                });
+                star.addEventListener('mouseout', function() {
+                    starSpans.forEach((s, i) => {
+                        s.textContent = i < selectedRating ? '★' : '☆';
+                    });
+                });
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.dataset.value);
+                    starsContainer.dataset.currentRating = selectedRating;
+                    console.log('선택된 평점:', selectedRating);
+                });
+            });
+
+            // 저장 버튼 클릭 이벤트
+            const saveBtn = commentFormContainer.querySelector('.save-btn');
+            const commentInput = commentFormContainer.querySelector('input[type="text"]');
+
+            saveBtn.addEventListener('click', () => {
+                const newContent = commentInput.value.trim();
+                if (newContent) {
+                    const newComment = {
+                        author: '새로운 사용자', // 실제 사용자 이름으로 대체 필요 (예: 로그인된 사용자 이름)
+                        rating: selectedRating,
+                        content: newContent,
+                        timestamp: Date.now() // 현재 시간 기록 (정렬용)
+                    };
+                    commentData.push(newComment); // 데이터에 추가
+                    saveCommentsToLocalStorage(commentData); // 로컬 스토리지에 저장
+                    displayComments(commentData); // 목록 새로고침 (초기 3개만 보임)
+                    commentInput.value = ''; // 입력창 초기화
+                    // 저장 후 별점 초기화
+                    selectedRating = 5;
+                    starsContainer.dataset.currentRating = selectedRating;
+                    starSpans.forEach((s, i) => {
+                        s.textContent = i < selectedRating ? '★' : '☆';
+                    });
+                } else {
+                    alert('코멘트를 입력해주세요.');
+                }
+            });
+        }
+
+        // 초기 로드 시 코멘트 표시
+        displayComments(commentData);
+        // 코멘트 폼 생성
+        createAndAppendCommentForm();
+
+        // '코멘트 더 보기' 버튼 클릭 이벤트
+        moreCommentsBtn.addEventListener('click', () => {
+            window.location.href = 'comment4.html'; // comment2.html로 이동
+        });
+    </script>
+    <script src="./top_menu.js"></script>
+    <script src="./js/footer.js"></script>
+</body>
+</html>
