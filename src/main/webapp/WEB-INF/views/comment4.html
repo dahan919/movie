@@ -22,7 +22,7 @@
 
         /* 상단 메뉴 (detail_page2.html에서 복사) */
         .header-hero {
-            position: fixed; /* 화면에 고정 */
+           
             top: 0;
             left: 0;
             width: 100%;
@@ -105,6 +105,7 @@
         }
         .poster-image img {
             width: 250px; border-radius: 10px;
+            align-items: center;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
         .movie-info { flex: 1; }
@@ -179,20 +180,21 @@
 </head>
 
 <body>
-    <header class="header-hero">
-        <div class="header-content">
-            <img src="./img/main_logo.png" alt="사이트 로고" class="main-logo"> 
-            <nav class="nav-menu">
-                <a href="#">홈</a>
-                <a href="#">영화</a>
-                <a href="#">드라마</a>
-                <a href="#">웹툰</a>
-            </nav>
+    <div class="top_menu">
+        <div class="menu_btn">
+          <a href="#">홈</a>
+          <a href="#">영화</a>
+          <a href="#"><img src="./img/로고 흰색.png" alt="" /></a>
+          <a href="#">드라마</a>
+          <a href="#">웹툰</a>
         </div>
-        <div class="login-info">로그아웃</div> 
-    </header>
-
-    <main style="padding-top: 270px;"> 
+        <ul>
+          <li>${nickname} 님 환영합니다</li>
+          <li>|</li>
+          <li><a href="./login.html" class="logout">로그아웃</a></li>
+        </ul>
+      </div>
+    <main> 
         <section class="movie-hero">
             <div class="movie-details-container">
                 <div class="poster-image">
