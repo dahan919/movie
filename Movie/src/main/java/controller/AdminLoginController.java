@@ -31,7 +31,9 @@ public class AdminLoginController implements Controller {
 			request.getSession().setAttribute("admin", admin);
 			
 			//관리자 페이지 이동
-			view = new ModelAndView("Admin.jsp", true);
+
+			view = new ModelAndView("admin.jsp", true);
+
 			
 		} else {
 			

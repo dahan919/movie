@@ -1,0 +1,13 @@
+.footer {
+  margin-top: 0;
+  width: 100%;
+  height: 300px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  list-style-type: none;
+  background-color: black;
+  padding-left: 20px;
+  flex-direction: column;
+}

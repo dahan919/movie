@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/배경화면.jpg");
+  background-repeat: repeat;
+  background-size: 600px 600px;
+  filter: blur(3px) brightness(0.5);
+  z-index: 0;
+}
+.main_container {
+  width: 100vw;
+  display: flex;
+  flex-flow: column nowrap;
+  z-index: 1;
+}
+.top_menu ul {
+  background-color: black;
+  width: 280px;
+  list-style-type: none;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  gap: 10px;
+  color: white;
+  padding-left: calc(100% - 280px);
+}
+.logout {
+  text-decoration: none;
+  color: white;
+  /* color: black */
+}
+.menu_btn {
+  background-color: black;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+.menu_btn a {
+  color: white;
+  /* color: black; */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.menu_btn a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 6px;
+  background-color: #ffc60a;
+  border-radius: 50px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-out;
+  z-index: 2;
+}
+.menu_btn a:hover::after {
+  transform: scaleX(1);
+}
+.menu_btn a > img {
+  width: 150px;
+  height: 150px;
+}
+.menu_btn a > img:hover {
+  width: 160px;
+  height: 160px;
+  transition: all 0.3s;
+}
