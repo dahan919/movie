@@ -198,8 +198,8 @@ END;
 
 -- Admin table 추가
 CREATE TABLE ADMIN(
-    id VARCHAR2(100),
-    passwd VARCHAR2
+    adminId VARCHAR2(100),
+    adminPasswd VARCHAR2
 );
 
 -- 주키 추가
