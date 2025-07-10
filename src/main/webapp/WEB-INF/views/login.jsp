@@ -26,9 +26,9 @@ pageEncoding="UTF-8"%>
           <button type="submit" class="login">로그인</button>
         </form>
         <div class="footer">
-          <a href="">아이디 찾기</a>
+          <a href="./findId.do">아이디 찾기</a>
           <p>|</p>
-          <a href="">비밀번호 찾기</a>
+          <a href="./findPasswd.do">비밀번호 찾기</a>
           <p>|</p>
           <a href="./join.do">회원가입</a>
           <p>|</p>
