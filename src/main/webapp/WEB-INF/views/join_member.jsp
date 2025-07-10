@@ -15,10 +15,10 @@
 
       <form action="join_chk.jsp" method="post">
         <div class="user">
-          <input type="text" name="id" placeholder="아이디" required />
+          <input type="text" name="ID" placeholder="아이디" required />
           <input type="password" name="passwd" placeholder="비밀번호 (8~12자)" required />
-          <input type="text" name="userName" placeholder="이름" required />
-          <input type="text" name="nickName" placeholder="닉네임" required />
+          <input type="text" name="name" placeholder="이름" required />
+          <input type="text" name="nickNm" placeholder="닉네임" required />
         </div>
         <button type="submit" class="btn">회원가입</button>
       </form>
