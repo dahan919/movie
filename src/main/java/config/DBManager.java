@@ -9,11 +9,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class DBManager {
+	//singleton
 	private static DBManager instance = new DBManager();
-	private SqlSessionFactory sqlSessionFactory;
-	
-	private DBManager() {
-		
+	private static SqlSessionFactory sqlSessionFactory;
+
+	public DBManager() {
 		String resource = "config/mybatis-config.xml";
 		InputStream inputStream;
 		try {
@@ -22,11 +22,6 @@ public class DBManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	public SqlSession getSession() {
-		return sqlSessionFactory.openSession();
 	}
 	
 	public static DBManager getInstance() {
@@ -34,4 +29,9 @@ public class DBManager {
 			instance = new DBManager();
 		return instance;
 	}
+	
+	public SqlSession getSession() {
+		return sqlSessionFactory.openSession(true);
+	}
+
 }

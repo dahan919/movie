@@ -15,7 +15,12 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="movie-mapper.xml"/>
-    <mapper resource="comment-mapper.xml"/>
+    <mapper resource="userInfo-mapper.xml"/>
+    <mapper resource="commentary-mapper.xml"/>
+    <mapper resource="drama-mapper.xml"/>
+    <mapper resource="webtoon-mapper.xml"/>
+    <mapper resource="media-mapper.xml"/>
+    <mapper resource="announcement-mapper.xml"/>
+    <mapper resource="admin-mapper.xml"/>
   </mappers>
 </configuration>
