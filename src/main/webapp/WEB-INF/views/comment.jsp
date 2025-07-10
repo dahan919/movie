@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -184,14 +185,14 @@
         <div class="menu_btn">
           <a href="#">홈</a>
           <a href="#">영화</a>
-          <a href="#"><img src="./img/로고 흰색.png" alt="" /></a>
+        <!--   <a href="#"><img src="./img/로고 흰색.png" alt="" /></a> -->
           <a href="#">드라마</a>
           <a href="#">웹툰</a>
         </div>
         <ul>
           <li>${nickname} 님 환영합니다</li>
           <li>|</li>
-          <li><a href="./login.html" class="logout">로그아웃</a></li>
+       <!--    <li><a href="./login.html" class="logout">로그아웃</a></li> -->
         </ul>
       </div>
     <main> 
@@ -225,7 +226,7 @@
     </main>
 
     <script>
-        // 로컬 스토리지에 저장될 키 (detail_page2.html과 동일해야 함)
+        // 로컬 스토리지에 저장될 키
         const LOCAL_STORAGE_KEY = 'whiplash_comments';
 
         // 로컬 스토리지에서 코멘트 데이터를 불러오는 함수
@@ -247,16 +248,24 @@
             return '★'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
         }
 
+        // createCommentElement 함수 수정: 백틱 대신 문자열 연결 사용
         function createCommentElement(comment) {
             const li = document.createElement('li');
-            li.innerHTML = `
-                <div class="comment-author">
-                    '${comment.author}'님의 한줄평 
-                    <span class="rating-stars">${getStars(comment.rating)}</span> 
-                    (평점 : ${comment.rating.toFixed(1)})
-                </div>
-                <div class="comment-content">${comment.content}</div>
-            `;
+
+            // JavaScript 함수 호출 결과를 변수에 저장
+            const starsHtml = getStars(comment.rating);
+            const formattedRating = comment.rating.toFixed(1);
+
+            // 문자열 연결을 사용하여 innerHTML 구성
+            let htmlContent = '';
+            htmlContent += '<div class="comment-author">';
+            htmlContent += "'" + comment.author + "'님의 한줄평 ";
+            htmlContent += '<span class="rating-stars">' + starsHtml + '</span> ';
+            htmlContent += '(평점 : ' + formattedRating + ')';
+            htmlContent += '</div>';
+            htmlContent += '<div class="comment-content">' + comment.content + '</div>';
+
+            li.innerHTML = htmlContent;
             return li;
         }
 
@@ -274,13 +283,13 @@
         displayAllComments(commentData);
 
         // '돌아가기' 버튼 클릭 이벤트
-        if (backBtn) {
+     if (backBtn) {
             backBtn.addEventListener('click', () => {
-                window.location.href = 'detail_page2.html'; 
+                window.location.href = 'detailPage.jsp'; 
             });
-        }
+        } 
     </script>
     <script src="./top_menu.js"></script>
-    <script src="./js/footer.js"></script>
+    <script src="./gddd/footer.js"></script>
 </body>
 </html>
