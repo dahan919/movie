@@ -15,10 +15,10 @@
 
       <form action="findPasswdChk.jsp" method="post" onsubmit="return checkPassword()">
         <div class="user">
-          <input type="text" name="id" placeholder="아이디" required />
-          <input type="text" name="phone" placeholder="연락처 (- 없이 입력해주세요)" required />
-          <input type="password" name="passWd1" id="passWd1" placeholder="새로운 비밀번호 (8~12자)" required />
-          <input type="password" name="passWd2" id="passWd2" placeholder="새로운 비밀번호 확인 (8~12자)" required />
+          <input type="text" name="ID" placeholder="아이디" required />
+          <input type="text" name="ph_num" placeholder="연락처 (- 없이 입력해주세요)" required />
+          <input type="password" name="passwd" id="passWd1" placeholder="새로운 비밀번호 (8~12자)" required />
+          <input type="password" name="passwd" id="passWd2" placeholder="새로운 비밀번호 확인 (8~12자)" required />
         </div>
         <button type="submit" class="btn">비밀번호 변경하기</button>
       </form>
@@ -31,7 +31,7 @@
       const pw1 = document.getElementById("passWd1").value;
       const pw2 = document.getElementById("passWd2").value;
 
-      if (pw1 === pw2) {
+      if (pw1 == pw2) {
         return true;
       } else {
         alert("비밀번호가 맞지 않습니다.");

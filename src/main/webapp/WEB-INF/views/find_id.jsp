@@ -15,8 +15,8 @@
 
       <form action="findIdChk.jsp" method="post">
         <div class="user">
-          <input type="text" name="userName" placeholder="이름(성함)" required />
-          <input type="text" name="phone" placeholder="연락처 (- 없이 입력해주세요)" required />
+          <input type="text" name="name" placeholder="이름(성함)" required />
+          <input type="text" name="ph_num" placeholder="연락처 (- 없이 입력해주세요)" required />
         </div>
         <button type="submit" class="btn">아이디찾기</button>
       </form>

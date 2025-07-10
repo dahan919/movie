@@ -67,16 +67,37 @@
       width: auto;
     }
   </style>
+<script>
+	window.onload = () => {
+	  document.getElementById("searchBtn").onclick = function() {
+	   doSearch();
+	  };
+	
+	  document.getElementById("searchInput").addEventListener("keydown", function(e) {
+	    if (e.key === "Enter") {
+	      doSearch();
+	    }
+	  });
+	
+	  function doSearch() {
+	    const keyword = document.getElementById("searchInput").value.trim();
+	    if (keyword === "") {
+	      alert("검색어를 입력해주세요.");
+	      return;
+	    }
+	  }
+	}
+</script>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
       <div class="main_container">
-        <%@ include file="top_menu.jsp" %>
+        <jsp:include page="header.jsp"></jsp:include>
         <hr color="#ffc60a" />
         <div class="search">
           <input type="text" placeholder="검색어를 입력하세요" />
-          <img src="./img/돋보기.png" alt="돋보기" />
+          <img src="./img/돋보기.png" id="searchBtn" style="cursor:pointer;" />
         </div>
 
         <h3>운영진의 PICK MOVIE!</h3>
@@ -96,8 +117,7 @@
       </div>
     </div>
   </div>
-
-  <%@ include file="footer.jsp" %>
+  <jsp:include page="footer.jsp"></jsp:include>
   <script src="./js/top_menu.js"></script>
   <script src="./js/carousel.js"></script>
   <script src="./js/footer.js"></script>
