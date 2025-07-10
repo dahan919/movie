@@ -2,11 +2,8 @@ package service;
 
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-
 import config.DBManager;
 import dto.UserInfoDTO;
-import mapper.AdminMapper;
 import mapper.UserInfoMapper;
 
 public class UserInfoService {

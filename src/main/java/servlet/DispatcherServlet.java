@@ -75,6 +75,9 @@ public class DispatcherServlet extends HttpServlet {
 			//결과: /StudentProject
 			//1-3.getServletPath()
 			//결과: /join.do
+		System.out.println("클래스패스 경로: " + getClass().getClassLoader().getResource("").getPath());
+		
+		System.out.println("DispatcherServlet called with URI: " + request.getRequestURI());
 		
 		//1-1. .lastIndexOf("/"): /가 마지막으로 존재한 위치의 인덱스번호를 반환
 		int n = request.getRequestURI().lastIndexOf("/");

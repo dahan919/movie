@@ -46,8 +46,16 @@ public class HandlerMapping {
 				controller = new JoinMemberController();
 				break;
 				
+		case "findIdForm":
+				controller = new FindIdFormController();
+				break;
+				
 		case "findId":
 				controller = new FindIdController();
+				break;
+			
+		case "findPasswdForm":
+				controller = new FindPasswdFormController();
 				break;
 				
 		case "findPasswd":

@@ -28,18 +28,21 @@ public class FindIdController implements Controller {
 		
 		UserInfoDTO user = UserInfoService.getInstance().findID(map);
 		
+		System.out.println(user);
+		
 		response.setContentType("application/json; charset=UTF-8");
 		JSONObject obj = new JSONObject();
 		
 		if(user != null) {
 			obj.put("status", "success");
-			obj.put("id", user.getID());
+			obj.put("id", user.getId());
 		} else {
 			obj.put("status", "fail");
 			obj.put("message", "일치하는 회원이 없습니다.");
 		}
 		
-
+		System.out.println(obj);
+		
 		response.getWriter().println(obj);
 		
 		return null;

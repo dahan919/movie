@@ -35,7 +35,7 @@ public class LoginController implements Controller {
 			request.getSession().setAttribute("loginMsg", "로그인 성공");
 			
 			//메인 페이지 이동
-			view = new ModelAndView("main.jsp", true);
+			view = new ModelAndView("main.jsp", false);
 			
 		} else {
 			

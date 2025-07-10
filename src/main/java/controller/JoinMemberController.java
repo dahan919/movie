@@ -34,7 +34,7 @@ public class JoinMemberController implements Controller {
 		
 		if(n != 0) {
 			
-			view = new ModelAndView("main.jsp", true);
+			view = new ModelAndView("login.jsp", false);
 			
 		} else {
 			

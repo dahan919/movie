@@ -20,12 +20,13 @@ public class FindPasswdController implements Controller {
 		ModelAndView view = null;
 		
 		String id = request.getParameter("id");
-		String name = request.getParameter("name");
 		String ph_num = request.getParameter("ph_num");
+		
+		System.out.println(id);
+		System.out.println(ph_num);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
-		map.put("name", name);
 		map.put("ph_num", ph_num);
 		
 		UserInfoDTO user = UserInfoService.getInstance().findPasswd(map);
@@ -39,14 +40,30 @@ public class FindPasswdController implements Controller {
 			String tempPasswd = generateTempPasswd(10);
 			user.setPasswd(tempPasswd);
 			
-			int n = UserInfoService.getInstance().updatePasswd(user);
+			String passWd1 = request.getParameter("passWd1");
+			String passWd2 = request.getParameter("passWd2");
 			
-			if(n >0) {
-				obj.put("status", "success");
-				obj.put("tempPasswd", tempPasswd);
+			if(passWd1.equals(passWd2)) {
+				
+				user.setPasswd(passWd1);
+				
+				System.out.println(user);
+				
+				int n = UserInfoService.getInstance().updatePasswd(user);
+				
+				if(n > 0) {
+					obj.put("status", "success");
+					obj.put("tempPasswd", tempPasswd);
+				} else {
+					obj.put("status", "fail");
+					obj.put("message", "비밀번호 변경 실패");
+				}
+					
 			} else {
+				
 				obj.put("status", "fail");
-				obj.put("message", "비밀번호 변경 실패");
+				obj.put("message", "새로운 비밀번호를 다시 확인해주십시오.");
+				
 			}
 			
 		} else {
@@ -55,6 +72,8 @@ public class FindPasswdController implements Controller {
 			obj.put("message", "일치하는 회원이 없습니다.");
 			
 		}
+		
+		System.out.println(obj);
 		
 		return null;
 	}

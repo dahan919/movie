@@ -26,13 +26,15 @@
   <select id="findPasswd">
   	select *
   	from user_info
-  	IN (id = #{id}, name = #{name}, ph_num = #{ph_num})
+  	where id = #{id}
+  	and ph_num = #{ph_num}
   </select>
   
   <update id="updatePasswd">
   	update user_info
   	set passwd = #{passwd}
-  	IN (id = #{id}, name = #{name}, ph_num = #{ph_num})
+  	where id = #{id}
+  	and ph_num = #{ph_num}
   </update>
   
 </mapper>
