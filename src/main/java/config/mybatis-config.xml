@@ -16,13 +16,11 @@
   </environments>
   <mappers>
     <mapper resource="config/userInfo-mapper.xml"/>
-    <!--
+    <mapper resource="config/admin-mapper.xml"/>
     <mapper resource="config/commentary-mapper.xml"/>
     <mapper resource="config/drama-mapper.xml"/>
     <mapper resource="config/webtoon-mapper.xml"/>
     <mapper resource="config/media-mapper.xml"/>
     <mapper resource="config/announcement-mapper.xml"/>
-    <mapper resource="config/admin-mapper.xml"/>
-     -->
   </mappers>
 </configuration>

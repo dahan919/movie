@@ -1,6 +1,10 @@
 package service;
 
+import java.util.List;
+import java.util.Map;
+
 import config.DBManager;
+import dto.WebtoonDTO;
 import mapper.WebtoonMapper;
 
 public class WebtoonService {
@@ -16,5 +20,9 @@ public class WebtoonService {
 		if(instance == null)
 			instance = new WebtoonService();
 		return instance;
+	}
+
+	public List<WebtoonDTO> selectBySearch(Map<String, Object> map) {
+		return mapper.selectBySearch(map);
 	}
 }

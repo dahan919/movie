@@ -1,5 +1,6 @@
 package mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import dto.UserInfoDTO;
@@ -15,6 +16,8 @@ public interface UserInfoMapper {
 	UserInfoDTO findPasswd(Map<String, Object> map);
 
 	int updatePasswd(UserInfoDTO user);
+
+	List<UserInfoDTO> selectBySearch(Map<String, Object> map);
 
 
 }

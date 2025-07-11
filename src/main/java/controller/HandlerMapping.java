@@ -1,5 +1,11 @@
 package controller;
 
+import java.io.IOException;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import view.ModelAndView;
+
 public class HandlerMapping {
 	//1. Singleton
 	
@@ -34,35 +40,59 @@ public class HandlerMapping {
 		Controller controller = null;
 		
 		switch(command) {
+		//로그인 페이지 기능
 		case "login" :
 				controller = new LoginController();
 				break;
 		
-		case "admin":
+		//관리자 로그인 페이지 기능
+		case "adminLogin":
 				controller = new AdminLoginController();
 				break;
-				
+		
+		//회원가입 페이지 기능
 		case "join":
 				controller = new JoinMemberController();
 				break;
-				
+		
+		//아이디 찾기 페이지 이동 기능
 		case "findIdForm":
 				controller = new FindIdFormController();
 				break;
-				
+		
+		//아이디 찾기 페이지 기능
 		case "findId":
 				controller = new FindIdController();
 				break;
-			
+		
+		//비밀번호 찾기 페이지 이동 기능
 		case "findPasswdForm":
 				controller = new FindPasswdFormController();
 				break;
-				
+		
+		//비밀번호 찾기 페이지 기능
 		case "findPasswd":
 				controller = new FindPasswdController();
 				break;
 		
+		//상세 페이지 기능:보류
+		case "comment":
+				controller = new CommentWriteController();
+				break;
+		
+		//모든 코멘트 보기 페이지 이동 기능:보류
+		case "commentForm":
+				controller = new CommentFormController();
+				break;
+				
+		//관리자 페이지 기능
+		//통합 검색 기능
+		case "admin":
+				controller = new AdminController();
+				break;
 		}
+		
+		//관리자 페이지에서 코멘트 모두 보기로 이동 기능
 		
 		return controller;
 	}

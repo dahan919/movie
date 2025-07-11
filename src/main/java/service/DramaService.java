@@ -1,6 +1,10 @@
 package service;
 
+import java.util.List;
+import java.util.Map;
+
 import config.DBManager;
+import dto.DramaDTO;
 import mapper.DramaMapper;
 
 public class DramaService {
@@ -16,5 +20,9 @@ public class DramaService {
 		if(instance == null)
 			instance = new DramaService();
 		return instance;
+	}
+
+	public List<DramaDTO> selectBySearch(Map<String, Object> map) {
+		return mapper.selectBySearch(map);
 	}
 }

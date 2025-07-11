@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.WebtoonMapper">
+	<select id="selectBySearch">
+  	select *
+  	from webtoon
+  	where title LIKE % || #{search} || %
+  	or writingAuthorName LIKE % || #{search} || %
+  	</select>
+</mapper>

@@ -1,6 +1,10 @@
 package service;
 
+import java.util.List;
+import java.util.Map;
+
 import config.DBManager;
+import dto.AnnouncementDTO;
 import mapper.AnnouncementMapper;
 
 public class AnnouncementService {
@@ -16,6 +20,10 @@ public class AnnouncementService {
 		if(instance == null)
 			instance = new AnnouncementService();
 		return instance;
+	}
+
+	public List<AnnouncementDTO> selectBySearch(Map<String, Object> map) {
+		return mapper.selectBySearch(map);
 	}
 	
 }

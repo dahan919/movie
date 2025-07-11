@@ -1,5 +1,6 @@
 package service;
 
+import java.util.List;
 import java.util.Map;
 
 import config.DBManager;
@@ -39,6 +40,10 @@ public class UserInfoService {
 
 	public int updatePasswd(UserInfoDTO user) {
 		return mapper.updatePasswd(user);
+	}
+
+	public List<UserInfoDTO> selectBySearch(Map<String, Object> map) {
+		return mapper.selectBySearch(map);
 	}
 
 
