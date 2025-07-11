@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>상세 정보 페이지 - 위플래쉬</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/menu.css" />
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/footer.css" />
+   <link rel="stylesheet" href="<%=request.getContextPath()%>/menu.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/footer.css" /> 
     <style>
         /* 기본 초기화 */
         * {
@@ -485,11 +485,11 @@
          * @param {number} rating - 평점 (예: 3.5)
          * @returns {string} 별 문자열 (예: "★★★")
          */
-        function getStars(rating) {
-            const fullStars = Math.floor(rating);
+        function getStars(score_c) {
+            const fullStars = Math.floor(score_c);
             // 소수점 평점을 제대로 반영하기 위해 반별 로직 추가
-            const halfStar = (rating - fullStars >= 0.5) ? '★' : '☆'; // 반별을 '★'로 표시
-            return '★'.repeat(fullStars) + (fullStars < 5 && rating - fullStars >= 0.5 ? halfStar : '') + '☆'.repeat(5 - fullStars - (rating - fullStars >= 0.5 ? 1 : 0));
+            const halfStar = (score_c - fullStars >= 0.5) ? '★' : '☆'; // 반별을 '★'로 표시
+            return '★'.repeat(fullStars) + (fullStars < 5 && score_c - fullStars >= 0.5 ? halfStar : '') + '☆'.repeat(5 - fullStars - (score_c - fullStars >= 0.5 ? 1 : 0));
         }
 
         /**
@@ -586,17 +586,17 @@
             });
 
             // 저장 버튼 클릭 이벤트
-            const saveBtn = commentFormContainer.querySelector('.save-btn');
+            const criticism = commentFormContainer.querySelector('.save-btn');
             const commentInput = commentFormContainer.querySelector('input[type="text"]');
 
-            saveBtn.addEventListener('click', () => {
+            criticism.addEventListener('click', () => {
                 const newContent = commentInput.value.trim();
                 if (newContent) {
                     const newComment = {
                         author: '새로운 사용자', // 실제 사용자 이름으로 대체 필요 (예: 로그인된 사용자 이름)
                         rating: selectedRating,
                         content: newContent,
-                        timestamp: Date.now() // 현재 시간 기록 (정렬용)
+                      /*   timestamp: Date.now() // 현재 시간 기록 (정렬용) */
                     };
                     commentData.push(newComment); // 데이터에 추가
                     saveCommentsToLocalStorage(commentData); // 로컬 스토리지에 저장
@@ -627,7 +627,7 @@
             window.location.href = 'comment.jsp'; // comment.html로 이동
         });
     </script>
-    <script src="<%=request.getContextPath()%>/top_menu.js"></script>
-    <script src="<%=request.getContextPath()%>/js/footer.js"></script>
+   <script src="<%=request.getContextPath()%>/top_menu.js"></script>
+    <script src="<%=request.getContextPath()%>/js/footer.js"></script> 
 </body>
 </html>
