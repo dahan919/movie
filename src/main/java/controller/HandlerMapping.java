@@ -44,6 +44,11 @@ public class HandlerMapping {
 		case "login" :
 				controller = new LoginController();
 				break;
+				
+		//로그인 페이지로 이동기능
+		case "loginForm":
+				controller = new LoginFormController();
+				break;
 		
 		//관리자 로그인 페이지 기능
 		case "adminLogin":
@@ -75,20 +80,35 @@ public class HandlerMapping {
 				controller = new FindPasswdController();
 				break;
 		
-		//상세 페이지 기능:보류
+		//상세 페이지 기능
 		case "comment":
 				controller = new CommentWriteController();
 				break;
 		
-		//모든 코멘트 보기 페이지 이동 기능:보류
+		//모든 코멘트 보기 페이지 이동 기능
 		case "commentForm":
 				controller = new CommentFormController();
 				break;
 				
 		//관리자 페이지 기능
-		//통합 검색 기능
+		//통합 검색 기능: 보류
 		case "admin":
 				controller = new AdminController();
+				break;
+		
+		//쓰기페이지로 이동 기능
+		case "writeNoticeForm":
+				controller = new WriteNoticeFormController();
+				break;
+		
+		//쓰기 페이지 기능
+		case "writeNotice":
+				controller = new WriteNoticeController();
+				break;
+		
+		//포스터 클릭시 상세페이지 이동기능
+		case "detailPage":
+				controller = new MainPageController();
 				break;
 		}
 		

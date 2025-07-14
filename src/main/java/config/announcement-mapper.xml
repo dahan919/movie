@@ -10,4 +10,9 @@
   	or a_content LIKE % || #{search} || %
   	or a_title LIKE % || #{search} || %
   </select>
+  
+  <insert id="insertAnnouncement">
+  	insert into announcement(a_title,a_content)
+  	values (#{a_title},#{a_content})
+  </insert>
 </mapper>

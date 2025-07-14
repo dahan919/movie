@@ -9,4 +9,6 @@ public interface AnnouncementMapper {
 
 	List<AnnouncementDTO> selectBySearch(Map<String, Object> map);
 
+	int insertAnnouncement(Map<String, Object> map);
+
 }
