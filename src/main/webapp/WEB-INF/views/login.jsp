@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
-    <link rel="stylesheet" href="../semi_project(Nam)/css/loginform.css" />
+    <link rel="stylesheet" href="./resources/css/loginform.css" />
   </head>
   <body>
     <div class="back_login">
@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
         <p>평가의 나라 대한민국에서 모든 리뷰를 남겨주세요</p>
         <form action="login_chk.jsp" method="post">
           <div class="user_menu">
-            <input type="text" name="ID" class="id" placeholder="아이디" />
+            <input type="text" name="id" class="id" placeholder="아이디" />
             <input
               type="password"
               name="passwd"
@@ -26,9 +26,9 @@ pageEncoding="UTF-8"%>
           <button type="submit" class="login">로그인</button>
         </form>
         <div class="footer">
-          <a href="./findId.do">아이디 찾기</a>
+          <a href="./findIdForm.do">아이디 찾기</a>
           <p>|</p>
-          <a href="./findPasswd.do">비밀번호 찾기</a>
+          <a href="./findPasswdForm.do">비밀번호 찾기</a>
           <p>|</p>
           <a href="./join.do">회원가입</a>
           <p>|</p>
