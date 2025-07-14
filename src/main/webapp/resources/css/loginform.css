@@ -1,0 +1,90 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+.back_login {
+  width: 100vw;
+  height: 1000px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.back_login::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/배경화면.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  z-index: 0;
+}
+.login_container {
+  border: 3px solid black;
+  border-radius: 30px;
+  width: 400px;
+  margin: 100px auto;
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(255, 247, 228);
+  z-index: 1;
+}
+.login_container > h1 {
+  color: rgb(38, 73, 97);
+  margin-top: 50px;
+}
+.login_container > p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  color: rgb(38, 73, 97);
+  font-weight: bold;
+}
+.user_menu > input {
+  width: 300px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid gray;
+  background-color: rgb(255, 247, 228);
+  margin-bottom: 10px;
+}
+.user_menu > input:focus {
+  outline: none;
+}
+.id {
+  margin-top: 20px;
+}
+.login {
+  width: 100%;
+  text-decoration: none;
+  align-content: center;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(38, 73, 97);
+  color: white;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 10px 0;
+  margin-top: 40px;
+}
+.footer {
+  font-size: 14px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.footer > a {
+  text-decoration: none;
+  color: blue;
+}
+.footer > a:visited {
+  color: blue;
+}
