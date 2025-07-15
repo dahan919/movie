@@ -3,7 +3,7 @@ package dto;
 import java.sql.Date;
 
 public class DramaDTO {
-	private String u_num;
+
 	private String name;
 	private String overview;
 	private String poster_path;
@@ -11,12 +11,12 @@ public class DramaDTO {
 	
 	public DramaDTO() {}
 
-	public String getU_num() {
-		return u_num;
-	}
-
-	public void setU_num(String u_num) {
-		this.u_num = u_num;
+	public DramaDTO(String name, String overview, String poster_path, Date first_air_date) {
+		super();
+		this.name = name;
+		this.overview = overview;
+		this.poster_path = poster_path;
+		this.first_air_date = first_air_date;
 	}
 
 	public String getName() {
@@ -53,9 +53,8 @@ public class DramaDTO {
 
 	@Override
 	public String toString() {
-		return "DramaDTO [u_num=" + u_num + ", name=" + name + ", overview=" + overview + ", poster_path=" + poster_path
+		return "DramaDTO [name=" + name + ", overview=" + overview + ", poster_path=" + poster_path
 				+ ", first_air_date=" + first_air_date + "]";
 	}
-	
 	
 }

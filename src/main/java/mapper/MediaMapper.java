@@ -9,4 +9,8 @@ public interface MediaMapper {
 
 	List<MediaDTO> selectBySearch(Map<String, Object> map);
 
+	int insertSearchResult(List<MediaDTO> mediaList);
+
+	List<MediaDTO> selectByPoster(String mediaImgUrl);
+
 }

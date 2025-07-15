@@ -46,6 +46,10 @@ public class UserInfoService {
 		return mapper.selectBySearch(map);
 	}
 
+	public UserInfoDTO selectNicknmById(Map<String, Object> map) {
+		return mapper.selectNicknmById(map);
+	}
+
 
 
 

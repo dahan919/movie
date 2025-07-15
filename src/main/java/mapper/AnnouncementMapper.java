@@ -11,4 +11,6 @@ public interface AnnouncementMapper {
 
 	int insertAnnouncement(Map<String, Object> map);
 
+	List<AnnouncementDTO> selectAll();
+
 }

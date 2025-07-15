@@ -46,4 +46,11 @@
   	or ph_num LIKE '%' || #{search} || '%'
   </select>
   
+  <select id="selectNicknmById">
+  	select nickNm
+  	from user_info
+  	where id = #{id}
+  	and passwd = #{passwd}
+  </select>
+  
 </mapper>

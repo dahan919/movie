@@ -96,7 +96,6 @@ public class AdminController implements Controller {
 		// dramaList -> contentArray
 		dramaList.forEach(drama -> {
 			JSONObject obj = new JSONObject();
-			obj.put("u_num", drama.getU_num());
 			obj.put("name", drama.getName());
 			obj.put("overview", drama.getOverview());
 			obj.put("poster_path", drama.getPoster_path());
@@ -108,7 +107,6 @@ public class AdminController implements Controller {
 		// mediaList -> contentArray
 		mediaList.forEach(media -> {
 			JSONObject obj = new JSONObject();
-			obj.put("u_num", media.getU_num());
 			obj.put("score", media.getScore());
 			obj.put("opendate", media.getOpendate());
 			obj.put("story", media.getStory());
@@ -122,7 +120,6 @@ public class AdminController implements Controller {
 		// webtoonList -> contentArray
 		webtoonList.forEach(webtoon -> {
 			JSONObject obj = new JSONObject();
-			obj.put("u_num", webtoon.getU_num());
 			obj.put("title", webtoon.getTitle());
 			obj.put("thumbnail", webtoon.getThumbnail());
 			obj.put("synopsis", webtoon.getSynopsis());
@@ -137,7 +134,6 @@ public class AdminController implements Controller {
 		// userInfoList -> userInfoArray
 		userInfoList.forEach(userInfo -> {
 			JSONObject obj = new JSONObject();
-			obj.put("u_num", userInfo.getU_num());
 			obj.put("name", userInfo.getName());
 			obj.put("nickNm", userInfo.getNickNm());
 			obj.put("passwd", userInfo.getPasswd());

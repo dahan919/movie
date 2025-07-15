@@ -10,4 +10,20 @@
   	or a_content LIKE '%' || #{search} || '%'
   	or a_title LIKE '%' || #{search} || '%'
   	</select>
+  	
+  	<insert id="insertSearchResult" parameterType="list">
+  	insert into media(score, opendate, story, poster, highlight, title)
+  	values (
+  	<foreach collection="list" item="media" open="(" separator="," close=")">
+  	#{media.score}, #{media.opendate}, #{media.story}, 
+  	#{media.poster}, #{media.highlight}, #{media.title}
+  	</foreach>
+  	)
+  	</insert>
+  	
+  	<select id="selectByPoster">
+  	select *
+  	from media
+  	where poster = #{poster}
+  	</select>
 </mapper>
