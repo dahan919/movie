@@ -19,5 +19,7 @@ public interface UserInfoMapper {
 
 	List<UserInfoDTO> selectBySearch(Map<String, Object> map);
 
+	UserInfoDTO selectNicknmById(Map<String, Object> map);
+
 
 }

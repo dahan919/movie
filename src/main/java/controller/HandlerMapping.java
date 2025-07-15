@@ -55,6 +55,11 @@ public class HandlerMapping {
 				controller = new AdminLoginController();
 				break;
 		
+		//회원가입 페이지 이동 기능
+		case "adminLoginForm":
+				controller = new AdminLoginFormController();
+				break;
+		
 		//회원가입 페이지 기능
 		case "join":
 				controller = new JoinMemberController();
@@ -105,10 +110,32 @@ public class HandlerMapping {
 		case "writeNotice":
 				controller = new WriteNoticeController();
 				break;
-		
-		//포스터 클릭시 상세페이지 이동기능
+				
 		case "detailPage":
 				controller = new MainPageController();
+				break;
+		
+		//포스터 클릭시 상세페이지 이동기능
+		case "detailPageMForm":
+				controller = new detailPageMFormController();
+				break;
+				
+		//포스터 클릭시 상세페이지 이동기능
+		case "detailPageDForm":
+				controller = new detailPageDFormController();
+				break;
+								
+		//포스터 클릭시 상세페이지 이동기능
+		case "detailPageWForm":
+				controller = new detailPageWFormController();
+				break;
+				
+		case "header":
+				controller = new headerController();
+				break;
+			
+		case "user-notice":
+				controller = new userNoticeController();
 				break;
 		}
 		

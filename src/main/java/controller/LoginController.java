@@ -7,6 +7,7 @@ import java.util.Map;
 import dto.UserInfoDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import service.UserInfoService;
 import view.ModelAndView;
 
@@ -31,8 +32,12 @@ public class LoginController implements Controller {
 		
 		if(user != null) {
 			
-			request.getSession().setAttribute("user", user);
-			request.getSession().setAttribute("loginMsg", "로그인 성공");
+			HttpSession session =  request.getSession();
+			//3시간동안 session내부 데이터 유지
+			session.setMaxInactiveInterval(60*60*3);
+			
+			session.setAttribute("user", user);
+			session.setAttribute("loginMsg", "로그인 성공");
 			
 			//메인 페이지 이동
 			view = new ModelAndView("main.jsp", false);

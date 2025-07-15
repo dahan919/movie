@@ -1,7 +1,6 @@
 package dto;
 
 public class WebtoonDTO {
-	private String u_num;
 	private String title;
 	private String thumbnail;
 	private String synopsis;
@@ -12,12 +11,20 @@ public class WebtoonDTO {
 	
 	public WebtoonDTO() {}
 	
-	public String getU_num() {
-		return u_num;
+	public WebtoonDTO(String title, String thumbnail, String synopsis, double starScoreAverage, double readCount,
+			String linkUrl, String writingAuthorName) {
+		super();
+		this.title = title;
+		this.thumbnail = thumbnail;
+		this.synopsis = synopsis;
+		this.starScoreAverage = starScoreAverage;
+		this.readCount = readCount;
+		this.linkUrl = linkUrl;
+		this.writingAuthorName = writingAuthorName;
 	}
-	public void setU_num(String u_num) {
-		this.u_num = u_num;
-	}
+
+
+
 	public String getTitle() {
 		return title;
 	}
@@ -60,12 +67,13 @@ public class WebtoonDTO {
 	public void setWritingAuthorName(String writingAuthorName) {
 		this.writingAuthorName = writingAuthorName;
 	}
+
 	@Override
 	public String toString() {
-		return "WebtoonDTO [u_num=" + u_num + ", title=" + title + ", thumbnail=" + thumbnail + ", synopsis=" + synopsis
+		return "WebtoonDTO [title=" + title + ", thumbnail=" + thumbnail + ", synopsis=" + synopsis
 				+ ", starScoreAverage=" + starScoreAverage + ", readCount=" + readCount + ", linkUrl=" + linkUrl
 				+ ", writingAuthorName=" + writingAuthorName + "]";
 	}
-	
+
 	
 }

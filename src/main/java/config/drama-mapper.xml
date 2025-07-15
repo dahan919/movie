@@ -3,10 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.DramaMapper">
+	
 	<select id="selectBySearch">
   	select *
   	from drama
   	Where name LIKE % || #{search} || %
   	or overview LIKE % || #{search} || %
-  </select>
+  	</select>
+  
+  	<insert id="insertSearchResult">
+  	insert into drama( name, overview, poster_path, first_air_date)
+  	values(#{name}, #{overview}, #{poster_path}, #{first_air_date}) 
+  	</insert>
+  	
+  	<select id="selectByPoster">
+  	select *
+  	from drama
+  	where poster_path = #{poster_path}
+  	</select>
+  	
 </mapper>

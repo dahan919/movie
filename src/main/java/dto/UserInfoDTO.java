@@ -1,7 +1,6 @@
 package dto;
 
 public class UserInfoDTO {
-	private String u_num;
 	private String name;
 	private String nickNm;
 	private String passwd;
@@ -10,22 +9,12 @@ public class UserInfoDTO {
 
 	public UserInfoDTO() {}
 
-	public UserInfoDTO(String u_num, String name, String nickNm, String passwd, String id, String ph_num) {
-		super();
-		this.u_num = u_num;
+	public UserInfoDTO(String name, String nickNm, String passwd, String id, String ph_num) {
 		this.name = name;
 		this.nickNm = nickNm;
 		this.passwd = passwd;
 		Id = id;
 		this.ph_num = ph_num;
-	}
-
-	public String getU_num() {
-		return u_num;
-	}
-
-	public void setU_num(String u_num) {
-		this.u_num = u_num;
 	}
 
 	public String getName() {
@@ -70,9 +59,11 @@ public class UserInfoDTO {
 
 	@Override
 	public String toString() {
-		return "UserInfoDTO [u_num=" + u_num + ", name=" + name + ", nickNm=" + nickNm + ", passwd=" + passwd + ", Id="
-				+ Id + ", ph_num=" + ph_num + "]";
+		return "UserInfoDTO [name=" + name + ", nickNm=" + nickNm + ", passwd=" + passwd + ", Id=" + Id + ", ph_num="
+				+ ph_num + "]";
 	}
+
+	
 
 	
 }

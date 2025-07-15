@@ -3,7 +3,6 @@ package dto;
 import java.sql.Date;
 
 public class MediaDTO {
-	private String u_num;
 	private double score;
 	private Date opendate;
 	private String story;
@@ -13,12 +12,17 @@ public class MediaDTO {
 	
 	public MediaDTO() {}
 	
-	public String getU_num() {
-		return u_num;
+	public MediaDTO(double score, Date opendate, String story, String poster, String highlight,
+			String title) {
+		super();
+		this.score = score;
+		this.opendate = opendate;
+		this.story = story;
+		this.poster = poster;
+		this.highlight = highlight;
+		this.title = title;
 	}
-	public void setU_num(String u_num) {
-		this.u_num = u_num;
-	}
+
 	public double getScore() {
 		return score;
 	}
@@ -58,9 +62,11 @@ public class MediaDTO {
 
 	@Override
 	public String toString() {
-		return "MediaDTO [u_num=" + u_num + ", score=" + score + ", opendate=" + opendate + ", story=" + story
-				+ ", poster=" + poster + ", highlight=" + highlight + ", title=" + title + "]";
+		return "MediaDTO [score=" + score + ", opendate=" + opendate + ", story=" + story + ", poster=" + poster
+				+ ", highlight=" + highlight + ", title=" + title + "]";
 	}
+
+
 	
 	
 }
