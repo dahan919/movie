@@ -7,8 +7,8 @@
 	<select id="selectBySearch">
   	select *
   	from webtoon
-  	where title LIKE % || #{search} || %
-  	or writingAuthorName LIKE % || #{search} || %
+  	where title LIKE '%' || #{search} || '%'
+  	or writingAuthorName LIKE '%' || #{search} || '%'
   	</select>
   	
   	<insert id ="insertSearchResult">

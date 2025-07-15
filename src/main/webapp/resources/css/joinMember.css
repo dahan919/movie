@@ -82,3 +82,19 @@
 .already > a:visited {
   color: blue;
 }
+
+.footer {
+  font-size: 14px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.footer > a {
+  text-decoration: none;
+  color: blue;
+}
+.footer > a:visited {
+  color: blue;
+}

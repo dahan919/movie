@@ -138,9 +138,7 @@ public class HandlerMapping {
 				controller = new userNoticeController();
 				break;
 		}
-		
 		//관리자 페이지에서 코멘트 모두 보기로 이동 기능
-		
 		return controller;
 	}
 

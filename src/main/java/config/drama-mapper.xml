@@ -7,10 +7,11 @@
 	<select id="selectBySearch">
   	select *
   	from drama
-  	Where name LIKE % || #{search} || %
-  	or overview LIKE % || #{search} || %
-  	</select>
-  
+
+  	Where name LIKE '%' || #{search} || '%'
+  	or overview LIKE '%' || #{search} || '%'
+  </select>
+
   	<insert id="insertSearchResult">
   	insert into drama( name, overview, poster_path, first_air_date)
   	values(#{name}, #{overview}, #{poster_path}, #{first_air_date}) 
@@ -21,5 +22,5 @@
   	from drama
   	where poster_path = #{poster_path}
   	</select>
-  	
+
 </mapper>

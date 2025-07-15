@@ -8,6 +8,7 @@
   font-size: 0;
   border-top: 2px solid #ffc60a;
   border-bottom: 2px solid #ffc60a;
+  background-color: black;
 }
 .item_container {
   list-style-type: none;
@@ -27,7 +28,7 @@
 .left_arrow {
   width: 80px;
   height: 80px;
-  background-image: url(../img/left_arrow.png);
+  background-image: url(/movie/resources/img/left_arrow.png);
   background-size: 100%;
   background-color: transparent;
   border: none;
@@ -38,7 +39,7 @@
 .right_arrow {
   width: 80px;
   height: 80px;
-  background-image: url(../img/right_arrow.png);
+  background-image: url(/movie/resources/img/right_arrow.png);
   background-size: 100%;
   background-color: transparent;
   border: none;

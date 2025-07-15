@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
       <div class="login_container">
         <h1>로그인</h1>
         <p>평가의 나라 대한민국에서 모든 리뷰를 남겨주세요</p>
-        <form action="login_chk.jsp" method="post">
+        <form action="./login.do" method="post">
           <div class="user_menu">
             <input type="text" name="id" class="id" placeholder="아이디" />
             <input
