@@ -6,7 +6,7 @@
 	<select id="selectBySearch">
   	select *
   	from drama
-  	Where name LIKE % || #{search} || %
-  	or overview LIKE % || #{search} || %
+  	Where name LIKE '%' || #{search} || '%'
+  	or overview LIKE '%' || #{search} || '%'
   </select>
 </mapper>

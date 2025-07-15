@@ -5,9 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>메인 페이지</title>
-  <link rel="stylesheet" href="./css/menu.css" />
-  <link rel="stylesheet" href="./css/carousel.css" />
-  <link rel="stylesheet" href="./css/footer.css" />
+  <link rel="stylesheet" href="./resources/css/header.css" />
+  <link rel="stylesheet" href="./resources/css/footer.css" />
   <style>
     html, body {
       width: 100%;
@@ -93,33 +92,30 @@
   <div class="wrapper">
     <div class="container">
       <div class="main_container">
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="./template/header.jsp"></jsp:include>
         <hr color="#ffc60a" />
         <div class="search">
           <input type="text" placeholder="검색어를 입력하세요" />
-          <img src="./img/돋보기.png" id="searchBtn" style="cursor:pointer;" />
+          <img src="./resources/img/돋보기.png" id="searchBtn" style="cursor:pointer;" />
         </div>
 
         <h3>운영진의 PICK MOVIE!</h3>
         <div class="pick_movie">
-          <a href=""><img src="./img-movie/괴물.webp" alt="괴물" /></a>
-          <a href=""><img src="./img-movie/위플레쉬.webp" alt="위플레쉬" /></a>
-          <a href=""><img src="./img-movie/바람과함께사라지다.webp" alt="바람과함께사라지다" /></a>
-          <a href=""><img src="./img-movie/명량.webp" alt="명량" /></a>
-          <a href=""><img src="./img-movie/파묘.webp" alt="파묘" /></a>
+          <a href=""><img src="./resources/img_movie/괴물.webp" alt="괴물" /></a>
+          <a href=""><img src="./resources/img_movie/위플레쉬.webp" alt="위플레쉬" /></a>
+          <a href=""><img src="./resources/img_movie/바람과함께사라지다.webp" alt="바람과함께사라지다" /></a>
+          <a href=""><img src="./resources/img_movie/명량.webp" alt="명량" /></a>
+          <a href=""><img src="./resources/img_movie/파묘.webp" alt="파묘" /></a>
         </div>
 
         <h3>이달의 MOVIE</h3>
-        <div id="carousel_movie"></div>
+        <jsp:include page="./template/carouser_movie.jsp"></jsp:include>
 
         <h3>이달의 DRAMA</h3>
-        <div id="carousel_drama"></div>
+        <jsp:include page="./template/carouser_drama.jsp"></jsp:include>
       </div>
     </div>
   </div>
-  <jsp:include page="footer.jsp"></jsp:include>
-  <script src="./js/top_menu.js"></script>
-  <script src="./js/carousel.js"></script>
-  <script src="./js/footer.js"></script>
+  <jsp:include page="./template/footer.jsp"></jsp:include>
 </body>
 </html>

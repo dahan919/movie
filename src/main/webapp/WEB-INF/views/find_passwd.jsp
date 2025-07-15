@@ -5,12 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>비밀번호 변경</title>
-  <link rel="stylesheet" href="./css/joinMember.css" />
+  <link rel="stylesheet" href="./resources/css/joinMember.css" />
 </head>
 <body>
   <div class="back_container">
     <div class="container">
-      <img src="./img/대한민국 투명.png" alt="로고" />
+      <img src="resources/img/대한민국 투명.png" alt="로고" />
       <h3>비밀번호 찾기/변경하기</h3>
 
       <form action="findPasswdChk.jsp" method="post" onsubmit="return checkPassword()">
