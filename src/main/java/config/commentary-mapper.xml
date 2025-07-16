@@ -14,9 +14,9 @@
 </select>
   
   <select id="selectBySearch">
-  	select *
-  	from commentary
-  	where u_num LIKE % || #{search} || %
-  	or criticism LIKE % || #{search} || %
+   select *
+  from commentary
+  where u_num LIKE CONCAT('%', #{search}, '%')
+  or criticism LIKE CONCAT('%', #{search}, '%')
   </select>
 </mapper>
