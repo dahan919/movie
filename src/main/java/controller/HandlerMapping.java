@@ -54,6 +54,10 @@ public class HandlerMapping {
 		case "adminLogin":
 				controller = new AdminLoginController();
 				break;
+		// 관리자 리스트 페이지 		
+		case "adminList":
+			controller = new AdminListController();
+		break;
 		
 		//회원가입 페이지 이동 기능
 		case "adminLoginForm":
@@ -138,6 +142,8 @@ public class HandlerMapping {
 				controller = new userNoticeController();
 				break;
 		}
+		
+		
 		//관리자 페이지에서 코멘트 모두 보기로 이동 기능
 		return controller;
 	}
