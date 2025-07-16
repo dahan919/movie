@@ -13,4 +13,6 @@ public interface MediaMapper {
 
 	List<MediaDTO> selectByPoster(String mediaImgUrl);
 
+	List<MediaDTO> selectAll();
+
 }

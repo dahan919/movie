@@ -74,7 +74,7 @@ public class DramaService {
 				//2-3-1. Send method(Usually given in manual)
 				//2-3-2. header setting
 				conn.setRequestMethod("");
-				conn.setRequestProperty("","");
+				conn.setRequestProperty("", );
 
 				// 3.Request
 				// 4.Request Verification
@@ -140,6 +140,10 @@ public class DramaService {
 
 		public List<MediaDTO> selectByPoster(String dramaImgUrl) {
 			return mapper.selectByPoster(dramaImgUrl);
+		}
+
+		public List<DramaDTO> selectAll() {
+			return mapper.selectAll();
 		}
 
 }

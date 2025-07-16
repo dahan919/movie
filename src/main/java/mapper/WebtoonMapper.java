@@ -14,4 +14,6 @@ public interface WebtoonMapper {
 
 	List<MediaDTO> selectByPoster(String dramaImgUrl);
 
+	List<WebtoonDTO> selectAll();
+
 }

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import service.UserInfoService;
 import view.ModelAndView;
 
-public class headerController implements Controller {
+public class HeaderController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {

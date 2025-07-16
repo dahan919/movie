@@ -154,6 +154,10 @@ public class MediaService {
 		public List<MediaDTO> selectByPoster(String mediaImgUrl) {			
 			return mapper.selectByPoster(mediaImgUrl);
 		}
+
+		public List<MediaDTO> selectAll() {
+			return mapper.selectAll();
+		}
 		
 		
 }

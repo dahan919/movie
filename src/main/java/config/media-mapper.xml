@@ -6,9 +6,9 @@
 	<select id="selectBySearch">
   	select *
   	from media
-  	where a_title LIKE '%' || #{search} || '%'
-  	or a_content LIKE '%' || #{search} || '%'
-  	or a_title LIKE '%' || #{search} || '%'
+  	where a_title LIKE % || #{search} || %
+  	or a_content LIKE % || #{search} || %
+  	or a_title LIKE % || #{search} || %
   	</select>
   	
   	<insert id="insertSearchResult" parameterType="list">
@@ -25,5 +25,10 @@
   	select *
   	from media
   	where poster = #{poster}
+  	</select>
+  	
+  	<select id="selectAll">
+  	select *
+  	from media
   	</select>
 </mapper>

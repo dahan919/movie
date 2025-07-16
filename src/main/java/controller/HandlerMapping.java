@@ -54,10 +54,6 @@ public class HandlerMapping {
 		case "adminLogin":
 				controller = new AdminLoginController();
 				break;
-		// 관리자 리스트 페이지 		
-		case "adminList":
-			controller = new AdminListController();
-		break;
 		
 		//회원가입 페이지 이동 기능
 		case "adminLoginForm":
@@ -121,30 +117,62 @@ public class HandlerMapping {
 		
 		//포스터 클릭시 상세페이지 이동기능
 		case "detailPageMForm":
-				controller = new detailPageMFormController();
+				controller = new DetailPageMFormController();
 				break;
 				
 		//포스터 클릭시 상세페이지 이동기능
 		case "detailPageDForm":
-				controller = new detailPageDFormController();
+				controller = new DetailPageDFormController();
 				break;
 								
 		//포스터 클릭시 상세페이지 이동기능
 		case "detailPageWForm":
-				controller = new detailPageWFormController();
+				controller = new DetailPageWFormController();
 				break;
 				
+		//header 이동 기능
 		case "header":
-				controller = new headerController();
+				controller = new HeaderController();
 				break;
-			
+		
+		//공지 쓰기
 		case "user-notice":
-				controller = new userNoticeController();
+				controller = new UserNoticeController();
 				break;
+				
+		//영화 페이지 이동:미완
+		case "categoryMForm":
+				controller = new CategoryMFormController();
+				break;
+		
+		//드라마 페이지 이동:미완
+		case "categoryDForm":
+				controller = new CategoryDFormController();
+				break;
+								
+		//웹툰 페이지 이동:미완
+		case "categoryWForm":
+				controller = new CategoryWFormController();
+				break;
+				
+		//영화 페이지에 띄울 데이터:미완
+		case "categoryM":
+			controller = new CategoryMController();
+			break;
+		
+		//드라마 페이지에 띄울 데이터:미완
+		case "categoryD":
+			controller = new CategoryDController();
+			break;
+			
+		//웹툰 페이지에 띄울 데이터:미완
+		case "categoryW":
+			controller = new CategoryWController();
+			break;
 		}
 		
 		
-		//관리자 페이지에서 코멘트 모두 보기로 이동 기능
+		
 		return controller;
 	}
 

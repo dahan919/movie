@@ -6,9 +6,9 @@
   <select id="selectBySearch">
   	select *
   	from announcement
-  	where a_title LIKE '%' || #{search} || '%'
-  	or a_content LIKE '%' || #{search} || '%'
-  	or a_title LIKE '%' || #{search} || '%'
+  	where a_title LIKE % || #{search} || %
+  	or a_content LIKE % || #{search} || %
+  	or a_title LIKE % || #{search} || %
   </select>
   
   <insert id="insertAnnouncement">

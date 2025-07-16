@@ -6,36 +6,40 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import dto.AnnouncementDTO;
+import dto.MediaDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.AnnouncementService;
+import service.MediaService;
 import view.ModelAndView;
 
-public class UserNoticeController implements Controller {
+public class CategoryMController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		ModelAndView view = null;
 		
-		List<AnnouncementDTO> announcementList = AnnouncementService.getInstance().selectAll();
+		//1.DB에서 데이터 꺼내오기
+		List<MediaDTO> mediaList = MediaService.getInstance().selectAll();
 		
+		//2.꺼낸 데이터 request 객체에 넣어주기
 		JSONArray array = new JSONArray();
-		announcementList.forEach(item -> {
+		mediaList.forEach(item -> {
 			JSONObject obj = new JSONObject();
-			obj.put("a_title", item.getA_title());
-			obj.put("a_content", item.getA_content());
-			obj.put("a_date", item.getA_date());
+			obj.put("score", item.getScore());
+			obj.put("opendate", item.getOpendate());
+			obj.put("story", item.getStory());
+			obj.put("poster", item.getPoster());
+			obj.put("highlight", item.getHighlight());
+			obj.put("title", item.getTitle());
 			array.put(obj);
 		});
 		
-		response.setContentType("application/json");
-		response.setContentType("text/html;charset=utf-8");
+		
+		//3.페이지로 보내주기
 		response.getWriter().println(array.toString());
 		
 		return view;
-		
 	}
 
 }

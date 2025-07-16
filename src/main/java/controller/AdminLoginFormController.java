@@ -13,7 +13,7 @@ public class AdminLoginFormController implements Controller {
 		ModelAndView view = null;
 		
 		view = new ModelAndView("join_member.jsp", true);
-		System.out.println("로그 메시지: 접속");
+		
 		return view;
 	}
 

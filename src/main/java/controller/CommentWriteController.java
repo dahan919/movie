@@ -24,8 +24,10 @@ public class CommentWriteController implements Controller {
 		String criticism = request.getParameter("criticism");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("score_c", score_c);
+		map.put("criticism", criticism);
 		
-		//DTO는 하나의 객체임h
+		//DTO는 하나의 객체임
 		List<CommentaryDTO> list = CommentaryService.getInstance().select3(map);
 		
 		//AJAX로 출력
@@ -38,7 +40,6 @@ public class CommentWriteController implements Controller {
 		list.forEach(dto -> {
 			JSONObject obj = new JSONObject();
 			obj.put("c_num", dto.getC_num());
-			obj.put("u_num", dto.getU_num());
 			obj.put("criticism", dto.getCriticism());
 			obj.put("score_c", dto.getScore_c());
 			obj.put("writedate", dto.getWritedate());

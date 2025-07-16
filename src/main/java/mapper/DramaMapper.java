@@ -14,4 +14,6 @@ public interface DramaMapper {
 
 	List<MediaDTO> selectByPoster(String dramaImgUrl);
 
+	List<DramaDTO> selectAll();
+
 }

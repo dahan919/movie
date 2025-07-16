@@ -37,6 +37,7 @@ public class JoinMemberController implements Controller {
 			view = new ModelAndView("login.jsp", false);
 			
 		} else {
+			
 			view = new ModelAndView("join_member.jsp", false);
 			
 		}

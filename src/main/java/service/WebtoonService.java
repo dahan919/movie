@@ -146,6 +146,10 @@ public class WebtoonService {
 	public List<MediaDTO> selectByPoster(String dramaImgUrl) {
 		return mapper.selectByPoster(dramaImgUrl);
 	}
+
+	public List<WebtoonDTO> selectAll() {
+		return mapper.selectAll();
+	}
 	
 	
 }
