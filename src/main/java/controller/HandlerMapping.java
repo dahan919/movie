@@ -59,12 +59,17 @@ public class HandlerMapping {
 		case "adminLoginForm":
 				controller = new AdminLoginFormController();
 				break;
+				
+		// 어드민 페이지 기능		
+		case "adminList":
+			controller = new AdminListController();
+			break;
 		
 		//회원가입 페이지 기능
 		case "join":
 				controller = new JoinMemberController();
 				break;
-		
+				
 		//아이디 찾기 페이지 이동 기능
 		case "findIdForm":
 				controller = new FindIdFormController();
@@ -169,7 +174,15 @@ public class HandlerMapping {
 		case "categoryW":
 			controller = new CategoryWController();
 			break;
+			
+		//노티스 페이지 기능
+		case "notice":
+			controller = new NoticeFormController();
+			break;
+			
 		}
+		
+	
 		
 		
 		
