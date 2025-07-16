@@ -62,8 +62,8 @@ public class HandlerMapping {
 				
 		// 어드민 페이지 기능		
 		case "adminList":
-			controller = new AdminListController();
-			break;
+				controller = new AdminListController();
+				break;
 		
 		//회원가입 페이지 기능
 		case "join":
@@ -174,12 +174,7 @@ public class HandlerMapping {
 		case "categoryW":
 			controller = new CategoryWController();
 			break;
-			
-		//노티스 페이지 기능
-		case "notice":
-			controller = new NoticeFormController();
-			break;
-			
+				
 		}
 		
 	
