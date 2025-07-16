@@ -23,7 +23,7 @@
         </div>
         <button type="submit" class="btn">회원가입</button>
       </form>
-
+      
       <div class="already">
         <p>이미 가입하셨나요?</p>
         <a href="./loginForm.do">로그인</a>
