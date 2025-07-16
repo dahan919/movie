@@ -162,7 +162,7 @@ button:hover {
 				<div class="tab" onclick="showTab('comment')">댓글 관리</div>
 				<div class="tab" onclick="showTab('notice')">공지사항 관리</div>
 			</div>
-			<a href="notice.jsp" class="tab">쓰기</a>
+			<a href="./notice.do" class="tab">쓰기</a>
 		</div>
 
 		<div id="member" class="tab-content">

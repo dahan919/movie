@@ -10,9 +10,7 @@ public class NoticeFormController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		ModelAndView view = null;
-		
-		view = new ModelAndView("notice.jsp", true);
+		ModelAndView view  = new ModelAndView("notice.jsp", false);;
 		
 		return view;
 	}
