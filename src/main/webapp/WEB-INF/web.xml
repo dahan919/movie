@@ -6,8 +6,18 @@
          version="5.0">
 
     <display-name>Movie</display-name>
-    
+
     <welcome-file-list>
         <welcome-file>main.jsp</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>servlet.DispatcherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
 </web-app>
