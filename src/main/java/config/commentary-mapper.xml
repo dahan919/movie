@@ -19,8 +19,8 @@
   	from commentary
   	where 1=1
    <if test="search != null and search.trim() != ''"> 
-     and u_num LIKE % || #{search} || %
-  	or criticism LIKE % || #{search} || %
+       and (u_num LIKE '%' || #{search} || '%' 
+        or criticism LIKE '%' || #{search} || '%')
    </if>
   </select>
   

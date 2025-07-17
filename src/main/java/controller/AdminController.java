@@ -34,6 +34,7 @@ public class AdminController implements Controller {
 		String search = request.getParameter("search");
 
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("search", search);
 
 		List<CommentaryDTO> commentaryList = CommentaryService.getInstance().selectBySearch(map);
 		List<AnnouncementDTO> announcementList = AnnouncementService.getInstance().selectBySearch(map);

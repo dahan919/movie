@@ -167,8 +167,8 @@ button:hover {
 
 		<div id="member" class="tab-content">
 			<div class="tab-search">
-				<input type="text" placeholder="회원 검색..." />
-				<button>검색</button>
+				<input type="text" id="searchInput" placeholder="회원 검색..." />
+				<button onclick="getList()">검색</button>
 			</div>
 			<ul id="memberList">
 				<li>회원 A
@@ -186,8 +186,8 @@ button:hover {
 
 		<div id="content" class="tab-content">
 			<div class="tab-search">
-				<input type="text" placeholder="콘텐츠 검색..." />
-				<button>검색</button>
+				<input type="text" id="searchInput" placeholder="콘텐츠 검색..." />
+				<button onclick="getList()">검색</button>
 			</div>
 			<ul id="contentList">
 				<li>영화 A 등록됨
@@ -205,8 +205,8 @@ button:hover {
 
 		<div id="comment" class="tab-content">
 			<div class="tab-search">
-				<input type="text" placeholder="댓글 검색..." />
-				<button>검색</button>
+				<input type="text" id="searchInput" placeholder="댓글 검색..." />
+				<button onclick="getList()">검색</button>
 			</div>
 			<ul id="commentList">
 				<li>회원 A: 이 영화 너무 좋아요
@@ -224,8 +224,8 @@ button:hover {
 
 		<div id="notice" class="tab-content">
 			<div class="tab-search">
-				<input type="text" placeholder="공지사항 검색..." />
-				<button>검색</button>
+				<input type="text" id="searchInput" placeholder="공지사항 검색..." />
+				<button onclick="getList()">검색</button>
 			</div>
 			<ul id="adminNoticeList">
 			</ul>
@@ -326,9 +326,13 @@ button:hover {
 
     		// 쿼리 스트링 만들기
     		const queryString = new URLSearchParams(params).toString();
-
+				
+    		const searchValue = document.getElementById('searchInput').value;
+    		
+    		console.log('searchValue:',searchValue)
+    		
     		// admin.do?id=admin&pw=1234 형태
-    		fetch("admin.do?search="+null, {
+    		fetch("admin.do?search="+searchValue, {
     		  method: 'GET'
     		})
     		.then(response => {
@@ -345,82 +349,85 @@ button:hover {
     		const adminNoticeList = document.getElementById("adminNoticeList");
     		
     		
-    // 기존 목록을 지우고 새롭게 리스트를 추가
-    memberList.innerHTML = '';
+    		// 회원 목록
+    		memberList.innerHTML = '';
+    		if (parsingData.userInfoArray.length === 0) {
+    		    memberList.innerHTML = '<li>데이터가 없습니다.</li>';
+    		} else {
+    		    parsingData.userInfoArray.forEach(member => {
+    		        const li = 
+    		            '<li>' +
+    		                '<strong>Name:</strong> ' + member.name + '<br>' +
+    		                '<strong>Nickname:</strong> ' + member.nickNm + '<br>' +
+    		                '<strong>Phone Number:</strong> ' + member.ph_num + '<br>' +
+    		                '<strong>Username:</strong> ' + member.id + '<br>' +
+    		                '<div class="li-buttons">' +
+    		                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+    		                '</div>' +
+    		            '</li>';
+    		        memberList.innerHTML += li;
+    		    });
+    		}
 
-    parsingData.userInfoArray.forEach(member => {
-        // 리스트 항목(li)을 문자열로 작성
-        const li = 
-            '<li>' +
-                '<strong>Name:</strong> ' + member.name + '<br>' +
-                '<strong>Nickname:</strong> ' + member.nickNm + '<br>' +
-                '<strong>Phone Number:</strong> ' + member.ph_num + '<br>' +
-                '<strong>Username:</strong> ' + member.id + '<br>' +
-                '<div class="li-buttons">' +
-                    '<button onclick="showDeleteModal(this)">삭제</button>' +
-                '</div>' +
-            '</li>';
+    		// 콘텐츠 목록
+    		contentList.innerHTML = '';
+    		if (parsingData.contentArray.length === 0) {
+    		    contentList.innerHTML = '<li>데이터가 없습니다.</li>';
+    		} else {
+    		    parsingData.contentArray.forEach(item => {
+    		        const li = 
+    		            '<li>' +
+    		                '<strong>first_air_date:</strong> ' + item.first_air_date + '<br>' +
+    		                '<strong>name:</strong> ' + item.name + '<br>' +
+    		                '<strong>overview:</strong> ' + item.overview + '<br>' +
+    		                '<strong>poster_path:</strong> ' + item.poster_path + '<br>' +
+    		                '<div class="li-buttons">' +
+    		                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+    		                '</div>' +
+    		            '</li>';
+    		        contentList.innerHTML += li;
+    		    });
+    		}
 
-        // 문자열로 만든 li를 memberList에 추가
-        memberList.innerHTML += li;
-    });
-    
-    contentList.innerHTML = '';
+    		// 댓글 목록
+    		commentList.innerHTML = '';
+    		if (parsingData.commentaryArray.length === 0) {
+    		    commentList.innerHTML = '<li>데이터가 없습니다.</li>';
+    		} else {
+    		    parsingData.commentaryArray.forEach(item => {
+    		        const li = 
+    		            '<li>' +
+    		                '<strong>c_num:</strong> ' + item.c_num + '<br>' +
+    		                '<strong>criticism:</strong> ' + item.criticism + '<br>' +
+    		                '<strong>score_c:</strong> ' + item.score_c + '<br>' +
+    		                '<strong>u_num:</strong> ' + item.u_num + '<br>' +
+    		                '<div class="li-buttons">' +
+    		                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+    		                '</div>' +
+    		            '</li>';
+    		        commentList.innerHTML += li;
+    		    });
+    		}
 
-    parsingData.contentArray.forEach(item => {
-        // 리스트 항목(li)을 문자열로 작성
-        const li = 
-            '<li>' +
-                '<strong>first_air_date:</strong> ' + item.first_air_date + '<br>' +
-                '<strong>name:</strong> ' + item.name + '<br>' +
-                '<strong>overview:</strong> ' + item.overview + '<br>' +
-                '<strong>poster_path:</strong> ' + item.poster_path + '<br>' +
-                '<div class="li-buttons">' +
-                    '<button onclick="showDeleteModal(this)">삭제</button>' +
-                '</div>' +
-            '</li>';
-
-        // 문자열로 만든 li를 memberList에 추가
-        contentList.innerHTML += li;
-    });
-    
-    commentList.innerHTML = '';
-    
-    parsingData.commentaryArray.forEach(item => {
-        // 리스트 항목(li)을 문자열로 작성
-        const li = 
-            '<li>' +
-                '<strong>c_num:</strong> ' + item.c_num + '<br>' +
-                '<strong>criticism:</strong> ' + item.criticism + '<br>' +
-                '<strong>score_c:</strong> ' + item.score_c + '<br>' +
-                '<strong>u_num:</strong> ' + item.u_num + '<br>' +
-                '<div class="li-buttons">' +
-                    '<button onclick="showDeleteModal(this)">삭제</button>' +
-                '</div>' +
-            '</li>';
-
-        // 문자열로 만든 li를 memberList에 추가
-        commentList.innerHTML += li;
-    });
-    
-    adminNoticeList.innerHTML = '';
-    
-    parsingData.announcementArray.forEach(item => {
-        // 리스트 항목(li)을 문자열로 작성
-        const li = 
-            '<li>' +
-                '<strong>a_content:</strong> ' + item.a_content + '<br>' +
-                '<strong>a_date:</strong> ' + item.a_date + '<br>' +
-                '<strong>a_num:</strong> ' + item.a_num + '<br>' +
-                '<strong>a_title:</strong> ' + item.a_title + '<br>' +
-                '<div class="li-buttons">' +
-                    '<button onclick="showDeleteModal(this)">삭제</button>' +
-                '</div>' +
-            '</li>';
-
-        // 문자열로 만든 li를 memberList에 추가
-        adminNoticeList.innerHTML += li;
-    });
+    		// 공지 목록
+    		adminNoticeList.innerHTML = '';
+    		if (parsingData.announcementArray.length === 0) {
+    		    adminNoticeList.innerHTML = '<li>데이터가 없습니다.</li>';
+    		} else {
+    		    parsingData.announcementArray.forEach(item => {
+    		        const li = 
+    		            '<li>' +
+    		                '<strong>a_content:</strong> ' + item.a_content + '<br>' +
+    		                '<strong>a_date:</strong> ' + item.a_date + '<br>' +
+    		                '<strong>a_num:</strong> ' + item.a_num + '<br>' +
+    		                '<strong>a_title:</strong> ' + item.a_title + '<br>' +
+    		                '<div class="li-buttons">' +
+    		                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+    		                '</div>' +
+    		            '</li>';
+    		        adminNoticeList.innerHTML += li;
+    		    });
+    		}
    	
     
     

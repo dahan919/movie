@@ -42,10 +42,10 @@
   	from user_info
   	where 1=1
   	<if test="search != null and search.trim() != ''">
-    and name LIKE % || #{search} || %
-  	or nickNm LIKE % || #{search} || %
-  	or id LIKE % || #{search} || %
-  	or ph_num LIKE % || #{search} || %
+    and (name LIKE '%' || #{search} || '%'
+  	or nickNm LIKE '%' || #{search} || '%'
+  	or id LIKE '%' || #{search} || '%'
+  	or ph_num LIKE '%' || #{search} || '%')
   	</if>
   </select>
   
