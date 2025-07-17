@@ -9,7 +9,7 @@
 <style>
 body {
 	font-family: Arial, sans-serif;
-	background-color: #fffdf0;
+	background-color: black;
 	margin: 0;
 	padding: 0;
 }
@@ -23,7 +23,7 @@ body {
 .header {
 	text-align: center;
 	margin-bottom: 20px;
-	color: #333;
+	color: #ffc60a;
 }
 
 .tabs-wrapper {
@@ -46,14 +46,14 @@ body {
 	border: 1px solid #aaa;
 	border-radius: 5px;
 	background-color: transparent;
-	color: #333;
+	color: white;
 	font-weight: bold;
 	cursor: pointer;
 	text-decoration: none;
 }
 
 .tab:hover {
-	background-color: #f2f2f2;
+	background-color: #ffc60a;
 }
 
 .tab-content {
@@ -74,14 +74,10 @@ body {
 
 .tab-search button {
 	padding: 10px;
-	background-color: #ddd;
+	background-color: #ffc60a;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-}
-
-.tab-search button:hover {
-	background-color: #bbb;
 }
 
 ul {
@@ -104,7 +100,7 @@ li {
 
 button {
 	padding: 5px 10px;
-	background-color: #0074D9;
+	background-color: #ffc60a;
 	color: white;
 	border: none;
 	border-radius: 5px;
@@ -113,7 +109,7 @@ button {
 }
 
 button:hover {
-	background-color: #005fa3;
+	background-color: black;
 }
 
 .modal {
@@ -170,18 +166,7 @@ button:hover {
 				<input type="text" id="searchInput" placeholder="회원 검색..." />
 				<button onclick="getList()">검색</button>
 			</div>
-			<ul id="memberList">
-				<li>회원 A
-					<div class="li-buttons">
-						<button onclick="showDeleteModal(this)">삭제</button>
-					</div>
-				</li>
-				<li>회원 B
-					<div class="li-buttons">
-						<button onclick="showDeleteModal(this)">삭제</button>
-					</div>
-				</li>
-			</ul>
+			<ul id="memberList"></ul>
 		</div>
 
 		<div id="content" class="tab-content">
@@ -189,18 +174,7 @@ button:hover {
 				<input type="text" id="searchInput" placeholder="콘텐츠 검색..." />
 				<button onclick="getList()">검색</button>
 			</div>
-			<ul id="contentList">
-				<li>영화 A 등록됨
-					<div class="li-buttons">
-						<button onclick="showDeleteModal(this)">삭제</button>
-					</div>
-				</li>
-				<li>드라마 B 등록됨
-					<div class="li-buttons">
-						<button onclick="showDeleteModal(this)">삭제</button>
-					</div>
-				</li>
-			</ul>
+			<ul id="contentList"></ul>
 		</div>
 
 		<div id="comment" class="tab-content">
@@ -208,18 +182,7 @@ button:hover {
 				<input type="text" id="searchInput" placeholder="댓글 검색..." />
 				<button onclick="getList()">검색</button>
 			</div>
-			<ul id="commentList">
-				<li>회원 A: 이 영화 너무 좋아요
-					<div class="li-buttons">
-						<button onclick="showDeleteModal(this)">삭제</button>
-					</div>
-				</li>
-				<li>회원 B: 별로에요
-					<div class="li-buttons">
-						<button onclick="showDeleteModal(this)">삭제</button>
-					</div>
-				</li>
-			</ul>
+			<ul id="commentList"></ul>
 		</div>
 
 		<div id="notice" class="tab-content">
@@ -227,8 +190,7 @@ button:hover {
 				<input type="text" id="searchInput" placeholder="공지사항 검색..." />
 				<button onclick="getList()">검색</button>
 			</div>
-			<ul id="adminNoticeList">
-			</ul>
+			<ul id="adminNoticeList"></ul>
 		</div>
 	</div>
 
