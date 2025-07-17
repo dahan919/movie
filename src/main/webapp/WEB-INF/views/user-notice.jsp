@@ -36,7 +36,7 @@
 
     .notice h3 {
       margin: 0 0 10px;
-      color: black;
+      color: #ffc60a;
     }
 
     .notice p {

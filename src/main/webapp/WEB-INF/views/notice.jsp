@@ -8,12 +8,12 @@
   <style>
     body {
       font-family: 'Malgun Gothic', sans-serif;
-      background-color: #fffdf0;
+      background-color: black;
       margin: 0;
       padding: 0;
     }
     header {
-      color: #333;
+      color: #ffc60a;
       padding: 20px;
       text-align: center;
       font-weight: bold;
@@ -34,7 +34,7 @@
     label {
       margin: 10px 0 5px;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 20px;
     }
     input, textarea {
       padding: 8px;
@@ -49,7 +49,7 @@
     button {
       margin-top: 20px;
       padding: 10px;
-      background-color: #0074D9;
+      background-color: #ffc60a;
       color: white;
       border: none;
       border-radius: 5px;
@@ -57,7 +57,7 @@
       cursor: pointer;
     }
     button:hover {
-      background-color: #005fa3;
+      background-color: black;
     }
     #customAlert {
       display: none;
