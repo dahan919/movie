@@ -20,11 +20,11 @@ public class FindIdController implements Controller {
 		ModelAndView view = null;
 		
 		String name = request.getParameter("name");
-		String ph_num = request.getParameter("ph_num");
+		String phNum = request.getParameter("ph_num");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("name", name);
-		map.put("ph_num", ph_num);
+		map.put("ph_num", phNum);
 		
 		UserInfoDTO user = UserInfoService.getInstance().findID(map);
 		

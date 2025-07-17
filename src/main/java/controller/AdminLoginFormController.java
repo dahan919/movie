@@ -12,7 +12,7 @@ public class AdminLoginFormController implements Controller {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		
-		view = new ModelAndView("join_member.jsp", true);
+		view = new ModelAndView("admin_login.jsp", true);
 		
 		return view;
 	}

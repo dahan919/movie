@@ -44,11 +44,17 @@ public class MainPageController implements Controller {
 			
 			//데이터 앞으로 보내주기
 			if(mn != 0 || dn != 0 || wn != 0) {
-				request.setAttribute("mList", mList);
-				request.setAttribute("dList", dList);
-				request.setAttribute("wList", wList);
 				
-				view = new ModelAndView("search.jsp", false);
+				JSONArray mediaArray = new JSONArray(mList);
+				JSONArray dramaArray = new JSONArray(dList);
+				JSONArray webtoonArray = new JSONArray(wList);
+				
+				JSONObject obj = new JSONObject();
+				obj.put("mediaArray", mediaArray);
+				obj.put("dramaArray", dramaArray);
+				obj.put("webtoonArray", webtoonArray);
+				
+				response.getWriter().println(obj);
 			}
 			
 		}

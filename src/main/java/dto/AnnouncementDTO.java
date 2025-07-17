@@ -4,42 +4,59 @@ import java.sql.Date;
 
 public class AnnouncementDTO {
 	
-	private String a_num;
-	private String a_title;
-	private String a_content;
-	private Date a_date;
+	private String aNum;
+	private String aTitle;
+	private String aContent;
+	private Date aDate;
 	
 	public AnnouncementDTO() {}
-	
-	public String getA_num() {
-		return a_num;
+
+	public AnnouncementDTO(String aNum, String aTitle, String aContent, Date aDate) {
+		super();
+		this.aNum = aNum;
+		this.aTitle = aTitle;
+		this.aContent = aContent;
+		this.aDate = aDate;
 	}
-	public void setA_num(String a_num) {
-		this.a_num = a_num;
+
+	public String getaNum() {
+		return aNum;
 	}
-	public String getA_title() {
-		return a_title;
+
+	public void setaNum(String aNum) {
+		this.aNum = aNum;
 	}
-	public void setA_title(String a_title) {
-		this.a_title = a_title;
+
+	public String getaTitle() {
+		return aTitle;
 	}
-	public String getA_content() {
-		return a_content;
+
+	public void setaTitle(String aTitle) {
+		this.aTitle = aTitle;
 	}
-	public void setA_content(String a_content) {
-		this.a_content = a_content;
+
+	public String getaContent() {
+		return aContent;
 	}
-	public Date getA_date() {
-		return a_date;
+
+	public void setaContent(String aContent) {
+		this.aContent = aContent;
 	}
-	public void setA_date(Date a_date) {
-		this.a_date = a_date;
+
+	public Date getaDate() {
+		return aDate;
 	}
+
+	public void setaDate(Date aDate) {
+		this.aDate = aDate;
+	}
+
 	@Override
 	public String toString() {
-		return "AnnouncementDTO [a_num=" + a_num + ", a_title=" + a_title + ", a_content=" + a_content + ", a_date="
-				+ a_date + "]";
+		return "AnnouncementDTO [aNum=" + aNum + ", aTitle=" + aTitle + ", aContent=" + aContent + ", aDate=" + aDate
+				+ "]";
 	}
+	
 	
 	
 }

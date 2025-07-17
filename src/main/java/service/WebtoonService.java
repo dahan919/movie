@@ -29,12 +29,6 @@ public class WebtoonService {
 	
 	private static WebtoonService instance = new WebtoonService();
 	private WebtoonMapper mapper;
-	
-	//API 변수
-	private static String apiKey = 
-			"a2dd868d4fmshc0559e159438944p133f7ejsnb5d4ca03f045";
-	private static String apiHost = 
-			"webtoon.p.rapidapi.com";
 
 	public WebtoonService() {
 		mapper= DBManager.getInstance().getSession().getMapper(WebtoonMapper.class);
@@ -56,7 +50,7 @@ public class WebtoonService {
 		String response = "";
 
 		// 1.URL setting
-		String apiURL = "https://api.themoviedb.org/3/tv/popular";
+		String apiURL = "https://comic.naver.com/api/search/all";
 
 		// 1-1. convert parameter(query String) into UTF-8 form
 		try {
@@ -65,7 +59,7 @@ public class WebtoonService {
 			e.printStackTrace();
 		}
 		// 1-2. add query String into URL
-		apiURL += "?search=" + searchTxt;
+		apiURL += "?keyword=" + searchTxt;
 
 		// 2.URL Verification setting
 		// 2-1. HttpURLConnection object initialization
@@ -78,10 +72,7 @@ public class WebtoonService {
 			
 			//2-3. Connection setting
 			//2-3-1. Send method(Usually given in manual)
-			//2-3-2. header setting
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("x-rapidapi-key", apiKey);
-			conn.setRequestProperty("x-rapidapi-host", apiHost);
 
 			// 3.Request
 			// 4.Request Verification
@@ -122,15 +113,11 @@ public class WebtoonService {
 		array.forEach(item -> {
 			JSONObject obj = (JSONObject) item;
 	
-			String title = obj.getString("title");
-			String thumbnail = obj.getString("thumbnail");
-			String synopsis = obj.getString("synopsis");
-			double starScoreAverage = obj.getDouble("starScoreAverage");
-			double readCount = obj.getDouble("readCount");
-			String linkUrl = obj.getString("linkUrl");
-			String writingAuthorName = obj.getString("writingAuthorName");
+			String titleName = obj.getString("titleName");
+			String titleId = obj.getString("titleId");
+			String thumbnailUrl = obj.getString("thumbnailUrl");
 			
-			WebtoonDTO dto = new WebtoonDTO(title, thumbnail, synopsis, starScoreAverage, readCount, linkUrl, writingAuthorName);
+			WebtoonDTO dto = new WebtoonDTO(titleName, titleId, thumbnailUrl);
 			
 			list.add(dto);
 		});
@@ -149,6 +136,10 @@ public class WebtoonService {
 
 	public List<WebtoonDTO> selectAll() {
 		return mapper.selectAll();
+	}
+
+	public List<WebtoonDTO> selectByTitleName(String titleName) {
+		return mapper.selectByTitleName(titleName);
 	}
 	
 	

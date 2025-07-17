@@ -44,7 +44,11 @@ public class LoginController implements Controller {
 			
 		} else {
 			
-			request.setAttribute("errorMsg", "아이디 혹은 비밀번호가 틀렸습니다.");
+			HttpSession session =  request.getSession();
+			//3시간동안 session내부 데이터 유지
+			session.setMaxInactiveInterval(60*60*3);
+			
+			session.setAttribute("errorMsg", "아이디 혹은 비밀번호가 틀렸습니다.");
 			
 			//로그인 페이지 이동
 			view = new ModelAndView("login.jsp", false);

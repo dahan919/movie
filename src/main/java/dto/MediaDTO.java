@@ -3,70 +3,68 @@ package dto;
 import java.sql.Date;
 
 public class MediaDTO {
-	private double score;
-	private Date opendate;
-	private String story;
-	private String poster;
-	private String highlight;
 	private String title;
+	private double voteAverage;
+	private String overview;
+	private String posterPath;
+	private Date releaseDate;
 	
 	public MediaDTO() {}
-	
-	public MediaDTO(double score, Date opendate, String story, String poster, String highlight,
-			String title) {
+
+	public MediaDTO(String title, double voteAverage, String overview, String posterPath, Date releaseDate) {
 		super();
-		this.score = score;
-		this.opendate = opendate;
-		this.story = story;
-		this.poster = poster;
-		this.highlight = highlight;
 		this.title = title;
+		this.voteAverage = voteAverage;
+		this.overview = overview;
+		this.posterPath = posterPath;
+		this.releaseDate = releaseDate;
 	}
 
-	public double getScore() {
-		return score;
-	}
-	public void setScore(double score) {
-		this.score = score;
-	}
-	public Date getOpendate() {
-		return opendate;
-	}
-	public void setOpendate(Date opendate) {
-		this.opendate = opendate;
-	}
-	public String getStory() {
-		return story;
-	}
-	public void setStory(String story) {
-		this.story = story;
-	}
-	public String getPoster() {
-		return poster;
-	}
-	public void setPoster(String poster) {
-		this.poster = poster;
-	}
-	public String getHighlight() {
-		return highlight;
-	}
-	public void setHighlight(String highlight) {
-		this.highlight = highlight;
-	}
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	@Override
-	public String toString() {
-		return "MediaDTO [score=" + score + ", opendate=" + opendate + ", story=" + story + ", poster=" + poster
-				+ ", highlight=" + highlight + ", title=" + title + "]";
+	public double getVoteAverage() {
+		return voteAverage;
 	}
 
+	public void setVoteAverage(double voteAverage) {
+		this.voteAverage = voteAverage;
+	}
 
-	
+	public String getOverview() {
+		return overview;
+	}
+
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
+
+	public String getPosterPath() {
+		return posterPath;
+	}
+
+	public void setPosterPath(String posterPath) {
+		this.posterPath = posterPath;
+	}
+
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	@Override
+	public String toString() {
+		return "MediaDTO [title=" + title + ", voteAverage=" + voteAverage + ", overview=" + overview + ", posterPath="
+				+ posterPath + ", releaseDate=" + releaseDate + "]";
+	}
+
 	
 }

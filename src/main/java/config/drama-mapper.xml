@@ -7,11 +7,8 @@
 	<select id="selectBySearch">
   	select *
   	from drama
-  	where  1=1
-  	<if test="search != null and search.trim() != ''"> 
-  	and (name LIKE '%' || #{search} || '%'
-  	or overview LIKE '%' || #{search} || '%')
-  	</if>
+  	Where name LIKE % || #{search} || %
+  	or overview LIKE % || #{search} || %
   	</select>
   
   	<insert id="insertSearchResult">
@@ -28,6 +25,14 @@
   	<select id="selectAll">
   	select *
   	from drama
+  	</select>
+  	
+  	<select id="selectByName">
+  	select *
+  	from drama d
+  	join commentary c
+  	on d.u_num = c.u_num
+  	where name = #{name}
   	</select>
   	
 </mapper>

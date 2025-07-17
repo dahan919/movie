@@ -21,22 +21,13 @@ public class CategoryWController implements Controller {
 
 		ModelAndView view = null;
 		
+		String titleName = request.getParameter("titleName");
+		
 		//1.DB에서 데이터 꺼내오기
-		List<WebtoonDTO> webtoonList = WebtoonService.getInstance().selectAll();
+		List<WebtoonDTO> webtoonList = WebtoonService.getInstance().selectByTitleName(titleName);
 		
 		//2.꺼낸 데이터 JSON으로 변환
-		JSONArray array = new JSONArray();
-		webtoonList.forEach(item -> {
-			JSONObject obj = new JSONObject();
-			obj.put("title", item.getTitle());
-			obj.put("thumbnail", item.getThumbnail());
-			obj.put("synopsis", item.getSynopsis());
-			obj.put("starScoreAverage", item.getStarScoreAverage());
-			obj.put("readCount", item.getReadCount());
-			obj.put("linkUrl", item.getLinkUrl());
-			obj.put("writingAuthorName", item.getWritingAuthorName());
-			array.put(obj);
-		});
+		JSONArray array = new JSONArray(webtoonList);
 		
 		//3.데이터 AJAX로 페이지로 보내주기
 		response.getWriter().print(array.toString());

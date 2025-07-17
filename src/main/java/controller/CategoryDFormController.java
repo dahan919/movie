@@ -12,7 +12,7 @@ public class CategoryDFormController implements Controller {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		
-		view = new ModelAndView("categoryD.jsp", false);
+		view = new ModelAndView("category_drama.jsp", false);
 		
 		return view;
 	}
