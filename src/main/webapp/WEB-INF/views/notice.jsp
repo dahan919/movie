@@ -77,7 +77,7 @@
     #customAlert button {
       margin-top: 15px;
       padding: 8px 20px;
-      background-color: #0074D9;
+      background-color: #ffc60a;
       color: white;
       border: none;
       border-radius: 5px;
@@ -156,6 +156,7 @@
 
     showAlert('📌 저장된 내용\n\n제목: ' + title + '\n내용: ' + content + '\n작성일자: ' + today);
   });
+ 
 </script>
 
 </body>

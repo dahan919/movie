@@ -61,8 +61,8 @@ public class HandlerMapping {
 				break;
 				
 		// 어드민 페이지 기능		
-		case "adminList":
-				controller = new AdminListController();
+		case "adminForm":
+				controller = new AdminFormController();
 				break;
 		
 		//회원가입 페이지 기능

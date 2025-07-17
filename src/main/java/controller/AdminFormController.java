@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import service.AdminService;
 import view.ModelAndView;
 
-public class AdminListController implements Controller {
+public class AdminFormController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
