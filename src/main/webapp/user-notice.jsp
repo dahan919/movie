@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: 'Malgun Gothic', sans-serif;
-      background-color: #fffdf0;
+      background-color: black;
       margin: 0;
       padding: 30px 0;
     }
@@ -22,7 +22,7 @@
     h1 {
       text-align: center;
       margin-bottom: 30px;
-      color: #333;
+      color: #ffc60a;
     }
 
     .notice {
@@ -36,7 +36,7 @@
 
     .notice h3 {
       margin: 0 0 10px;
-      color: #0074D9;
+      color: black;
     }
 
     .notice p {
