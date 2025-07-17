@@ -227,7 +227,8 @@ button:hover {
 				<input type="text" placeholder="공지사항 검색..." />
 				<button>검색</button>
 			</div>
-			<ul id="adminNoticeList"></ul>
+			<ul id="adminNoticeList">
+			</ul>
 		</div>
 	</div>
 
@@ -312,7 +313,7 @@ button:hover {
     const target = document.getElementById(tabName);
     if (target) {
       target.style.display = 'block';
-      if (tabName === 'notice') loadAdminNotices();
+     /*  if (tabName === 'notice') loadAdminNotices(); */
     }
   }
 
@@ -327,7 +328,7 @@ button:hover {
     		const queryString = new URLSearchParams(params).toString();
 
     		// admin.do?id=admin&pw=1234 형태
-    		fetch(`admin.do?${queryString}`, {
+    		fetch("admin.do?search="+null, {
     		  method: 'GET'
     		})
     		.then(response => {
@@ -335,13 +336,108 @@ button:hover {
     		  return response.text(); // 또는 .json()
     		})
     		.then(data => {
-    		  console.log("응답 데이터:", data);
+    		
+    		const parsingData =JSON.parse(data)
+    			
+    		const memberList = document.getElementById("memberList");
+    		const contentList = document.getElementById("contentList");
+    		const commentList = document.getElementById("commentList");
+    		const adminNoticeList = document.getElementById("adminNoticeList");
+    		
+    		
+    // 기존 목록을 지우고 새롭게 리스트를 추가
+    memberList.innerHTML = '';
+
+    parsingData.userInfoArray.forEach(member => {
+        // 리스트 항목(li)을 문자열로 작성
+        const li = 
+            '<li>' +
+                '<strong>Name:</strong> ' + member.name + '<br>' +
+                '<strong>Nickname:</strong> ' + member.nickNm + '<br>' +
+                '<strong>Phone Number:</strong> ' + member.ph_num + '<br>' +
+                '<strong>Username:</strong> ' + member.id + '<br>' +
+                '<div class="li-buttons">' +
+                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+                '</div>' +
+            '</li>';
+
+        // 문자열로 만든 li를 memberList에 추가
+        memberList.innerHTML += li;
+    });
+    
+    contentList.innerHTML = '';
+
+    parsingData.contentArray.forEach(item => {
+        // 리스트 항목(li)을 문자열로 작성
+        const li = 
+            '<li>' +
+                '<strong>first_air_date:</strong> ' + item.first_air_date + '<br>' +
+                '<strong>name:</strong> ' + item.name + '<br>' +
+                '<strong>overview:</strong> ' + item.overview + '<br>' +
+                '<strong>poster_path:</strong> ' + item.poster_path + '<br>' +
+                '<div class="li-buttons">' +
+                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+                '</div>' +
+            '</li>';
+
+        // 문자열로 만든 li를 memberList에 추가
+        contentList.innerHTML += li;
+    });
+    
+    commentList.innerHTML = '';
+    
+    parsingData.commentaryArray.forEach(item => {
+        // 리스트 항목(li)을 문자열로 작성
+        const li = 
+            '<li>' +
+                '<strong>c_num:</strong> ' + item.c_num + '<br>' +
+                '<strong>criticism:</strong> ' + item.criticism + '<br>' +
+                '<strong>score_c:</strong> ' + item.score_c + '<br>' +
+                '<strong>u_num:</strong> ' + item.u_num + '<br>' +
+                '<div class="li-buttons">' +
+                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+                '</div>' +
+            '</li>';
+
+        // 문자열로 만든 li를 memberList에 추가
+        commentList.innerHTML += li;
+    });
+    
+    adminNoticeList.innerHTML = '';
+    
+    parsingData.announcementArray.forEach(item => {
+        // 리스트 항목(li)을 문자열로 작성
+        const li = 
+            '<li>' +
+                '<strong>a_content:</strong> ' + item.a_content + '<br>' +
+                '<strong>a_date:</strong> ' + item.a_date + '<br>' +
+                '<strong>a_num:</strong> ' + item.a_num + '<br>' +
+                '<strong>a_title:</strong> ' + item.a_title + '<br>' +
+                '<div class="li-buttons">' +
+                    '<button onclick="showDeleteModal(this)">삭제</button>' +
+                '</div>' +
+            '</li>';
+
+        // 문자열로 만든 li를 memberList에 추가
+        adminNoticeList.innerHTML += li;
+    });
+   	
+    
+    
+    
+    
+    
+    		 
+    console.log("parsingData:", parsingData);
+	  console.log("commentaryArray:", parsingData.commentaryArray);
+	  console.log("announcementArray:", parsingData.announcementArray);
+	  console.log("userInfoArray:", parsingData.userInfoArray);
+	  console.log("contentArray:", parsingData.contentArray);	
+    		  
     		})
     		.catch(error => {
     		  console.error("에러:", error);
     		});
-     
-	  
   }
   
   
