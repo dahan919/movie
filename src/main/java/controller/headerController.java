@@ -35,7 +35,7 @@ public class HeaderController implements Controller {
 				
 				UserInfoDTO dto = UserInfoService.getInstance().selectNicknmById(map);
 				
-				String nickNm = dto.getNickNm();
+				request.setAttribute("dto", dto);
 				
 			} else {
 				

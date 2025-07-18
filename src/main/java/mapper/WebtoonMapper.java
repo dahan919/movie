@@ -16,4 +16,6 @@ public interface WebtoonMapper {
 
 	List<WebtoonDTO> selectAll();
 
+	List<WebtoonDTO> selectByTitleName(String titleName);
+
 }

@@ -4,17 +4,18 @@ public class UserInfoDTO {
 	private String name;
 	private String nickNm;
 	private String passwd;
-	private String Id;
-	private String ph_num;
+	private String id;
+	private String phNum;
 
 	public UserInfoDTO() {}
 
-	public UserInfoDTO(String name, String nickNm, String passwd, String id, String ph_num) {
+	public UserInfoDTO(String name, String nickNm, String passwd, String id, String phNum) {
+		super();
 		this.name = name;
 		this.nickNm = nickNm;
 		this.passwd = passwd;
-		Id = id;
-		this.ph_num = ph_num;
+		this.id = id;
+		this.phNum = phNum;
 	}
 
 	public String getName() {
@@ -42,28 +43,27 @@ public class UserInfoDTO {
 	}
 
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
 
-	public String getPh_num() {
-		return ph_num;
+	public String getPhNum() {
+		return phNum;
 	}
 
-	public void setPh_num(String ph_num) {
-		this.ph_num = ph_num;
+	public void setPhNum(String phNum) {
+		this.phNum = phNum;
 	}
 
 	@Override
 	public String toString() {
-		return "UserInfoDTO [name=" + name + ", nickNm=" + nickNm + ", passwd=" + passwd + ", Id=" + Id + ", ph_num="
-				+ ph_num + "]";
+		return "UserInfoDTO [name=" + name + ", nickNm=" + nickNm + ", passwd=" + passwd + ", id=" + id + ", phNum="
+				+ phNum + "]";
 	}
 
 	
-
 	
 }

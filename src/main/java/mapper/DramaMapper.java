@@ -16,4 +16,6 @@ public interface DramaMapper {
 
 	List<DramaDTO> selectAll();
 
+	List<DramaDTO> selectByName(String name);
+
 }

@@ -15,4 +15,6 @@ public interface MediaMapper {
 
 	List<MediaDTO> selectAll();
 
+	List<MediaDTO> selectByTitle(String title);
+
 }

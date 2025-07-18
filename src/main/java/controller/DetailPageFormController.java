@@ -6,15 +6,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import view.ModelAndView;
 
-public class CategoryWFormController implements Controller {
+public class DetailPageFormController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		
-		view = new ModelAndView("category_webtoon.jsp", false);
+		view = new ModelAndView("detailPage.jsp", false);
 		
-		return view;
+		return null;
 	}
 
 }
