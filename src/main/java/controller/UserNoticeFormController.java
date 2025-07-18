@@ -6,14 +6,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import view.ModelAndView;
 
-public class AdminLoginFormController implements Controller {
+public class UserNoticeFormController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		ModelAndView view = null;
-		
-		view = new ModelAndView("admin_login.jsp", false);
-		
+		ModelAndView view = new ModelAndView("user-notice.jsp", false);
 		return view;
 	}
 

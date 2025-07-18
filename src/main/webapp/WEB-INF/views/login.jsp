@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
           <p>|</p>
           <a href="./join.do">회원가입</a>
           <p>|</p>
-          <a href="./admin_login.do">관리자</a>
+          <a href="./adminLoginForm.do">관리자</a>
         </div>
       </div>
     </div>

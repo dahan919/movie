@@ -72,7 +72,7 @@
 </style>
 <div class="top_menu">
   <div class="menu_btn">
-    <a href="#">공지사항</a>
+     <a href="./userNoticeForm.do">공지사항</a>
     <a href="#">영화</a>
     <a href="#"><img src="${pageContext.request.contextPath}/resources/img/로고흰색.png" alt="logo" /></a>
     <a href="#">드라마</a>

@@ -91,12 +91,12 @@
   <header><h1>✍🏻 공지사항 작성</h1></header>
 
   <div class="container">
-    <form id="noticeForm">
+    <form id="noticeForm" action="./writeNotice.do">
       <label for="title">제목</label>
-      <input type="text" id="title" name="title" required>
+      <input type="text" id="title" name="a_title" required>
 
       <label for="content">공지내용</label>
-      <textarea id="content" name="content" required></textarea>
+      <textarea id="content" name="a_content" required></textarea>
 
       <button type="submit">저장</button>
     </form>
@@ -107,57 +107,7 @@
     <button onclick="closeAlert()">확인</button>
   </div>
 
-  <script>
-  function showAlert(message) {
-    document.getElementById("alertMessage").innerText = message;
-    document.getElementById("customAlert").style.display = "block";
-  }
-
-  function closeAlert() {
-    document.getElementById("customAlert").style.display = "none";
-    window.location.href = "admin.jsp?tab=member";  // 저장 후 회원관리 탭으로 이동
-  }
-
-  const form = document.getElementById('noticeForm');
-  const titleInput = document.getElementById('title');
-  const contentInput = document.getElementById('content');
-
-  const editIndex = localStorage.getItem('editIndex');
-  const notices = JSON.parse(localStorage.getItem('notices') || '[]');
-
-  if (editIndex !== null && notices[editIndex]) {
-    const notice = notices[editIndex];
-    titleInput.value = notice.title;
-    contentInput.value = notice.content;
-  }
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const title = titleInput.value.trim();
-    const content = contentInput.value.trim();
-    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-
-    if (!title || !content) {
-      alert('제목과 내용을 모두 입력해주세요.');
-      return;
-    }
-
-    const newNotice = { title: title, content: content, date: today };
-
-    if (editIndex !== null && notices[editIndex]) {
-      notices[editIndex] = newNotice;
-      localStorage.removeItem('editIndex');
-    } else {
-      notices.unshift(newNotice);
-    }
-
-    localStorage.setItem('notices', JSON.stringify(notices));
-
-    showAlert('📌 저장된 내용\n\n제목: ' + title + '\n내용: ' + content + '\n작성일자: ' + today);
-  });
  
-</script>
 
 </body>
 </html>

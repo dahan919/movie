@@ -23,7 +23,7 @@ public class HandlerMapping {
 		//쓰던 객체를 골수까지 쓰는 게 훵씬 효율적임
 	
 		//3. 글로벌한 접근을 위해
-		//? 이건 공부해 보겠음.
+		//? 이건 공부해 보겠음.rmsep 
 	private static HandlerMapping instance = new HandlerMapping();
 
 	public HandlerMapping() {}
@@ -140,9 +140,13 @@ public class HandlerMapping {
 				controller = new HeaderController();
 				break;
 		
-		//공지 쓰기
+		//공지 보여주기
 		case "user-notice":
 				controller = new UserNoticeController();
+				break;
+			
+		case "userNoticeForm" :
+			controller = new UserNoticeFormController();
 				break;
 				
 		//영화 페이지 이동:미완

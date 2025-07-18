@@ -15,9 +15,9 @@
   </select>
   
   <insert id="insertAnnouncement">
-  	insert into announcement(a_title,a_content)
-  	values (#{a_title},#{a_content})
-  </insert>
+  insert into announcement(a_title, a_content)
+values (#{a_title}, #{a_content})
+</insert>
   
   <select id="selectAll">
   	select * from announcement
