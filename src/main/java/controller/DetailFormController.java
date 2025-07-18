@@ -12,7 +12,7 @@ public class DetailFormController implements Controller {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		
-		view = new ModelAndView("detail.jsp", false);
+		view = new ModelAndView("detailPage.jsp", false);
 		
 		return view;
 	}

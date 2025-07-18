@@ -22,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import config.DBManager;
+import dto.DramaDTO;
 import dto.MediaDTO;
 import mapper.MediaMapper;
 
@@ -40,8 +41,8 @@ public class MediaService {
 		return instance;
 	}
 
-	public List<MediaDTO> selectBySearch(Map<String, Object> map) {
-		return mapper.selectBySearch(map);
+	public List<MediaDTO> selectBySearch(String search) {
+		return mapper.selectBySearch(search);
 	}
 	
 	//API 받아오기: 미완
@@ -123,13 +124,13 @@ public class MediaService {
 				JSONObject obj = (JSONObject) item;
 		
 				String title = obj.getString("title");
-				double voteAverage = obj.getDouble("voteAverage");
+				double voteAverage = Math.round(obj.getDouble("voteAverage")*100) /100;
 				String overview = obj.getString("overview");
 				String posterPath = obj.getString("posterPath");
 				
 				//date format으로 받기
 				String releaseDatestr = obj.getString("releaseDate");
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date releaseDate = null;
 				try {
 					releaseDate = (Date) sdf.parse(releaseDatestr);
@@ -147,8 +148,8 @@ public class MediaService {
 			return list;
 		}
 
-		public int insertSearchResult(List<MediaDTO> mediaList) {
-			return mapper.insertSearchResult(mediaList);
+		public int insertSearchResult(List<MediaDTO> mList) {
+			return mapper.insertSearchResult(mList);
 		}
 
 		public List<MediaDTO> selectByPoster(String mediaImgUrl) {			
@@ -161,6 +162,10 @@ public class MediaService {
 
 		public List<MediaDTO> selectByTitle(String title) {
 			return mapper.selectByTitle(title);
+		}
+
+		public List<MediaDTO> selectByUNum(String uNum) {
+			return mapper.selectByUNum(uNum);
 		}
 		
 		

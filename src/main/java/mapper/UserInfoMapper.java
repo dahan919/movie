@@ -17,7 +17,7 @@ public interface UserInfoMapper {
 
 	int updatePasswd(UserInfoDTO user);
 
-	List<UserInfoDTO> selectBySearch(Map<String, Object> map);
+	List<UserInfoDTO> selectBySearch(String search);
 
 	UserInfoDTO selectNicknmById(Map<String, Object> map);
 

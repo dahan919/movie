@@ -16,9 +16,9 @@ public class DetailController implements Controller {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String value = request.getParameter("value");
+		String uNum = request.getParameter("u_num");
 		
-		List<MediaDTO> mediaList = MediaService.getInstance().selectByValue(value);
+		List<MediaDTO> mediaList = MediaService.getInstance().selectByUNum(uNum);
 		
 		JSONArray mediaArray = new JSONArray(mediaList);
 		

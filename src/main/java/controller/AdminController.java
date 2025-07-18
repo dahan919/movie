@@ -33,14 +33,12 @@ public class AdminController implements Controller {
 
 		String search = request.getParameter("search");
 
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		List<CommentaryDTO> commentaryList = CommentaryService.getInstance().selectBySearch(map);
-		List<AnnouncementDTO> announcementList = AnnouncementService.getInstance().selectBySearch(map);
-		List<DramaDTO> dramaList = DramaService.getInstance().selectBySearch(map);
-		List<MediaDTO> mediaList = MediaService.getInstance().selectBySearch(map);
-		List<WebtoonDTO> webtoonList = WebtoonService.getInstance().selectBySearch(map);
-		List<UserInfoDTO> userInfoList = UserInfoService.getInstance().selectBySearch(map);
+		List<CommentaryDTO> commentaryList = CommentaryService.getInstance().selectBySearch(search);
+		List<AnnouncementDTO> announcementList = AnnouncementService.getInstance().selectBySearch(search);
+		List<DramaDTO> dramaList = DramaService.getInstance().selectBySearch(search);
+		List<MediaDTO> mediaList = MediaService.getInstance().selectBySearch(search);
+		List<WebtoonDTO> webtoonList = WebtoonService.getInstance().selectBySearch(search);
+		List<UserInfoDTO> userInfoList = UserInfoService.getInstance().selectBySearch(search);
 
 		// 관리자 페이지가 일단 하나인 것으로 간주하고 작업
 		// AJAX 사용

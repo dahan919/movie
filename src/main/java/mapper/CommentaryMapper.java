@@ -9,6 +9,10 @@ public interface CommentaryMapper {
 
 	List<CommentaryDTO> select3(Map<String, Object> map);
 
-	List<CommentaryDTO> selectBySearch(Map<String, Object> map);
+	List<CommentaryDTO> selectBySearch(String search);
+
+	int insertCommentary(Map<String, Object> map);
+
+	List<CommentaryDTO> selectOrderByUnumDesc();
 
 }

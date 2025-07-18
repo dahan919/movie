@@ -12,7 +12,7 @@ public class JoinMemberFormController implements Controller {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		
-		view = new ModelAndView("join_memeber.jsp", false);
+		view = new ModelAndView("join_member.jsp", false);
 		
 		return view;
 	}

@@ -8,7 +8,7 @@ import dto.MediaDTO;
 
 public interface DramaMapper {
 
-	List<DramaDTO> selectBySearch(Map<String, Object> map);
+	List<DramaDTO> selectBySearch(String search);
 
 	int insertSearchResult(List<DramaDTO> list);
 

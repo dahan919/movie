@@ -5,7 +5,7 @@
 <mapper namespace="mapper.UserInfoMapper">
 
   <select id="login">
-    select id, passwd 
+    select id, passwd, nicknm
     from user_info
     where id = #{id}
     and passwd = #{passwd}
@@ -51,6 +51,12 @@
   	from user_info
   	where id = #{id}
   	and passwd = #{passwd}
+  </select>
+  
+  <select id="selectByUNum">
+  	select *
+  	from user_info
+  	where u_num = #{u_num}
   </select>
   
 </mapper>

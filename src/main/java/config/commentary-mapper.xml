@@ -3,32 +3,37 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.CommentaryMapper">
-  <select id="select3">
-    select *
-    from (
-    select * from commentary
-    where score_c = #{score_c} and criticism = #{criticism} 
-    order by c_num desc
-    )
-    where rownum <= 6;
+
+	<insert id="insertCommentary" >
+	insert into commentary (u_num, criticism, score_c)
+	values(#{u_num},#{criticism},#{score_c})
+	</insert>
+
+
+  <select id="selectBySearch" resultType="dto.CommentaryDTO">
+    SELECT *
+    FROM commentary
+    WHERE criticism LIKE CONCAT(CONCAT('%', #{search}), '%')
   </select>
-  
-  <select id="selectBySearch">
-  	select *
-  	from commentary
-  	where u_num LIKE % || #{search} || %
-  	or criticism LIKE % || #{search} || %
-  </select>
-  
-  <update id="updateCommentary" >
-  	update commentary
-  	set u_num = {u_num}, criticism = #{criticism}, 
-  	score_c = #{score_c}, writedate = #{writedate}
-  	where c_num Like % || #{c_num} || %
+
+  <update id="updateCommentary" parameterType="dto.CommentaryDTO">
+    UPDATE commentary
+    SET u_num = #{u_num},
+        criticism = #{criticism},
+        score_c = #{score_c},
+        writedate = #{writedate}
+    WHERE c_num = #{c_num}
   </update>
-  
+
   <delete id="deleteCommentary">
-  	delete from commentary
-  	where c_num = #{c_num}
+    DELETE FROM commentary
+    WHERE c_num = #{c_num}
   </delete>
+
+
+	<select id="selectOrderByUnumDesc">
+	select *
+	from commentary
+	order by u_num desc
+	</select>
 </mapper>
