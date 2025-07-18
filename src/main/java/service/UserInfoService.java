@@ -42,8 +42,8 @@ public class UserInfoService {
 		return mapper.updatePasswd(user);
 	}
 
-	public List<UserInfoDTO> selectBySearch(Map<String, Object> map) {
-		return mapper.selectBySearch(map);
+	public List<UserInfoDTO> selectBySearch(String search) {
+		return mapper.selectBySearch(search);
 	}
 
 	public UserInfoDTO selectNicknmById(Map<String, Object> map) {

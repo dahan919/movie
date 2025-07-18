@@ -26,8 +26,16 @@ public class CommentaryService {
 		return mapper.select3(map);
 	}
 
-	public List<CommentaryDTO> selectBySearch(Map<String, Object> map) {
-		return mapper.selectBySearch(map);
+	public List<CommentaryDTO> selectBySearch(String search) {
+		return mapper.selectBySearch(search);
+	}
+
+	public int insertCommentary(Map<String, Object> map) {
+		return mapper.insertCommentary(map);
+	}
+
+	public List<CommentaryDTO> selectOrderByUnumDesc() {
+		return mapper.selectOrderByUnumDesc();
 	}
 	
 }

@@ -21,6 +21,13 @@ public class CategoryWController implements Controller {
 
 		ModelAndView view = null;
 		
+		//+alpha) api값 받아오기
+		String apiResult = WebtoonService.getInstance().search(null);
+		
+		List<WebtoonDTO> wList = WebtoonService.getInstance().StringToJSON(apiResult);
+		
+		JSONArray apiArray = new JSONArray(wList);
+		
 		String titleName = request.getParameter("titleName");
 		
 		//1.DB에서 데이터 꺼내오기
@@ -29,8 +36,13 @@ public class CategoryWController implements Controller {
 		//2.꺼낸 데이터 JSON으로 변환
 		JSONArray array = new JSONArray(webtoonList);
 		
-		//3.데이터 AJAX로 페이지로 보내주기
-		response.getWriter().print(array.toString());
+		//3. JSONObject를 만들어서 배열 2개 넣기
+		JSONObject obj = new JSONObject();
+		obj.put("apiArray", apiArray);
+		obj.put("array", array);
+		
+		//4. 데이터 AJAX로 페이지로 보내주기
+		response.getWriter().print(obj.toString());
 		
 		return view;
 		

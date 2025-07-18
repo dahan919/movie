@@ -40,8 +40,8 @@ public class DramaService {
 		return instance;
 	}
 
-	public List<DramaDTO> selectBySearch(Map<String, Object> map) {
-		return mapper.selectBySearch(map);
+	public List<DramaDTO> selectBySearch(String search) {
+		return mapper.selectBySearch(search);
 	}
 	
 	//API 받아오기
@@ -122,10 +122,11 @@ public class DramaService {
 
 				String name = obj.getString("name");
 				String overview = obj.getString("overview");
+				double voteAverage = Math.round(obj.getDouble("voteAverage")*100) /100;
 				String poster_path = obj.getString("poster_path");
 				
 				String first_air_date_str = obj.getString("first_air_date");
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date first_air_date = null;
 				try {
 					first_air_date = (Date) sdf.parse(first_air_date_str);
@@ -143,8 +144,8 @@ public class DramaService {
 			return list;
 		}
 
-		public int insertSearchResult(List<DramaDTO> list) {
-			return mapper.insertSearchResult(list);
+		public int insertSearchResult(List<DramaDTO> dlist) {
+			return mapper.insertSearchResult(dlist);
 		}
 
 		public List<MediaDTO> selectByPoster(String dramaImgUrl) {

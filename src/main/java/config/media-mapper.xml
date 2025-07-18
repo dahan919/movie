@@ -6,7 +6,7 @@
 	<select id="selectBySearch">
   	select *
   	from media
-  	where title LIKE % || #{search} || %
+  	where title LIKE '%' || #{search} || '%'
   	</select>
   	
   	<insert id="insertSearchResult" parameterType="list">

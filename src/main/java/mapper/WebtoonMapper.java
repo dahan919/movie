@@ -8,7 +8,7 @@ import dto.WebtoonDTO;
 
 public interface WebtoonMapper {
 
-	List<WebtoonDTO> selectBySearch(Map<String, Object> map);
+	List<WebtoonDTO> selectBySearch(String search);
 
 	int insertSearchResult(List<WebtoonDTO> list);
 
