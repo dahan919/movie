@@ -301,8 +301,9 @@ button:hover {
     		  if (!response.ok) throw new Error("HTTP error " + response.status);
     		  return response.text(); // 또는 .json()
     		})
-    		.then(data => {
+    		.then(res => {
     		
+    	
     		const parsingData =JSON.parse(data)
     			
     		const memberList = document.getElementById("memberList");
@@ -379,10 +380,9 @@ button:hover {
     		    parsingData.announcementArray.forEach(item => {
     		        const li = 
     		            '<li>' +
-    		                '<strong>a_content:</strong> ' + item.a_content + '<br>' +
-    		                '<strong>a_date:</strong> ' + item.a_date + '<br>' +
-    		                '<strong>a_num:</strong> ' + item.a_num + '<br>' +
-    		                '<strong>a_title:</strong> ' + item.a_title + '<br>' +
+    		                '<strong>공지사항 제목:</strong> ' + item.a_title + '<br>' +
+    		                '<strong>공지사항 내용:</strong> ' + item.a_content + '<br>' +
+    		                '<strong>작성일:</strong> ' + item.a_date + '<br>' +
     		                '<div class="li-buttons">' +
     		                    '<button onclick="showDeleteModal(this)">삭제</button>' +
     		                '</div>' +

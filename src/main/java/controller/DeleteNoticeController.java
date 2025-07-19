@@ -9,22 +9,21 @@ import jakarta.servlet.http.HttpServletResponse;
 import service.AnnouncementService;
 import view.ModelAndView;
 
-public class WriteNoticeController implements Controller {
+public class DeleteNoticeController implements Controller {
 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		
-		String a_title = request.getParameter("a_title");
-		String a_content = request.getParameter("a_content");
+		String a_num = request.getParameter("a_num");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("a_title", a_title);
-		map.put("a_content", a_content);
+		map.put("a_num", a_num);
+
+	
+		String n = AnnouncementService.getInstance().deleteAnnouncement(map);
 		
-		int n = AnnouncementService.getInstance().insertAnnouncement(map);
-		
-		if(n != 0) {
+		if (n != null && !n.equals("")) {
 			request.setAttribute("map", map);
 			request.setAttribute("msg", "공지가 추가되었습니다.");
 		} else {
@@ -32,7 +31,6 @@ public class WriteNoticeController implements Controller {
 		}
 		
 	
-		
 		return view;
 	}
 

@@ -91,15 +91,13 @@
   <header><h1>✍🏻 공지사항 작성</h1></header>
 
   <div class="container">
-    <form id="noticeForm" action="./writeNotice.do">
       <label for="title">제목</label>
       <input type="text" id="title" name="a_title" required>
 
       <label for="content">공지내용</label>
       <textarea id="content" name="a_content" required></textarea>
 
-      <button type="submit">저장</button>
-    </form>
+      <button type="button" onclick="submitNoticeForm()">저장</button>
   </div>
 
   <div id="customAlert">
@@ -110,4 +108,38 @@
  
 
 </body>
+
+<script type="text/javascript">
+
+function submitNoticeForm(e) {
+	
+	  // 입력값 가져오기
+	  const title = document.getElementById('title').value;
+	  const content = document.getElementById('content').value;
+
+	  console.log('a_title',title)
+	   console.log('a_content',content)
+	  
+	  // GET 쿼리 스트링 생성
+	  const params = new URLSearchParams({
+	    a_title: title,
+	    a_content: content
+	  }).toString();
+
+	  console.log('파람',params)
+	  
+	  // ★★★ 이 부분이 GET 방식! ★★★
+	  fetch('./writeNotice.do?' + params) // GET 방식 AJAX 요청
+	    .then(data => {
+	    
+	      alert('저장되었습니다!');
+	      window.location.href = "./adminForm.do";
+	    })
+	    .catch(error => {
+	      alert('오류 발생: ' + error);
+	    });
+	}
+
+</script>
+
 </html>

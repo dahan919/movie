@@ -12,14 +12,21 @@
    or a_content LIKE '%' || #{search} || '%'
    or a_title LIKE '%' || #{search} || '%')
   	</if>
+  	order by a_num desc
   </select>
   
   <insert id="insertAnnouncement">
-  insert into announcement(a_title, a_content)
-values (#{a_title}, #{a_content})
+insert into announcement(a_title, a_content, a_date)
+values (#{a_title}, #{a_content}, SYSDATE)
 </insert>
   
   <select id="selectAll">
   	select * from announcement
   </select>
+  
+  <delete id="deleteAnnouncement" parameterType="map">
+  delete from announcement
+where a_num = #{a_num}
+  </delete>
+  
 </mapper>

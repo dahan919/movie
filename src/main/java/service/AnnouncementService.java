@@ -29,6 +29,10 @@ public class AnnouncementService {
 	public int insertAnnouncement(Map<String, Object> map) {
 		return mapper.insertAnnouncement(map);
 	}
+	
+	public String deleteAnnouncement(Map<String, Object> map) {
+		return mapper.deleteAnnouncement(map);
+	}
 
 	public List<AnnouncementDTO> selectAll() {
 		return mapper.selectAll();

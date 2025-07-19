@@ -72,7 +72,7 @@
 </style>
 <div class="top_menu">
   <div class="menu_btn">
-    <a href="#">공지사항</a>
+    <a href="#" onclick="getNotices(); return false;">공지사항</a>
     <a href="#">영화</a>
     <a href="#"><img src="./img/로고 흰색.png" alt="" /></a>
     <a href="#">드라마</a>
