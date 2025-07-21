@@ -17,7 +17,7 @@ public class UserNoticeController implements Controller {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		ModelAndView view = null;
+		ModelAndView view = null;  
 		
 		List<AnnouncementDTO> announcementList = AnnouncementService.getInstance().selectAll();
 		
@@ -30,7 +30,7 @@ public class UserNoticeController implements Controller {
 			array.put(obj);
 		});
 		
-		response.setContentType("application/json");
+		
 		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().println(array.toString());
 		

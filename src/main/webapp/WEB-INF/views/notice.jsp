@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>공지사항 작성</title>
   <style>
-    body {
+     body {
       font-family: 'Malgun Gothic', sans-serif;
       background-color: black;
       margin: 0;
@@ -18,71 +18,99 @@
       text-align: center;
       font-weight: bold;
     }
-
     .container {
       max-width: 480px;
-      margin: 0 auto;
+      margin: 30px auto 0 auto;
       background: white;
-      padding: 25px;
+      padding: 30px 25px 25px 25px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    form {
       display: flex;
       flex-direction: column;
+      gap: 18px;
     }
     label {
-      margin: 10px 0 5px;
       font-weight: bold;
       font-size: 20px;
+      margin-bottom: 5px;
     }
-    input, textarea {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
+    input[type="text"], textarea {
+      border: 1.5px solid #ffc60a;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 16px;
+      margin-bottom: 3px;
+      outline: none;
+      transition: border 0.2s;
+      background: #f9f8f3;
+    }
+    input[type="text"]:focus, textarea:focus {
+      border: 2px solid #ffc60a;
+      background: #fff8e1;
     }
     textarea {
       resize: vertical;
-      min-height: 80px;
+      min-height: 90px;
+      font-family: 'Malgun Gothic', sans-serif;
     }
     button {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #ffc60a;
-      color: white;
+      background: #ffc60a;
+      color: #212121;
+      font-size: 19px;
+      font-weight: bold;
       border: none;
-      border-radius: 5px;
-      font-size: 15px;
+      border-radius: 8px;
+      padding: 12px 0;
       cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      transition: background 0.2s;
     }
     button:hover {
-      background-color: black;
+      background: #ffd700;
     }
+    /* Custom Alert Modal */
     #customAlert {
       display: none;
       position: fixed;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.25);
       z-index: 1000;
-      width: 300px;
+      align-items: center;
+      justify-content: center;
+    }
+    #customAlert.show {
+      display: flex;
+    }
+    #customAlert > div, #customAlert > p, #customAlert > button {
+      /* for safety, reset margin/padding */
+      margin: 0; padding: 0;
+    }
+    #customAlertContent {
+      background: #fff;
+      border-radius: 13px;
+      padding: 32px 32px 22px 32px;
+      min-width: 230px;
       text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 2.5px solid #ffc60a;
+    }
+    #alertMessage {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #212121;
+      font-weight: 500;
     }
     #customAlert button {
-      margin-top: 15px;
-      padding: 8px 20px;
-      background-color: #ffc60a;
-      color: white;
+      width: 100%;
+      border-radius: 8px;
+      background: #ffc60a;
+      color: #212121;
+      font-size: 17px;
+      font-weight: bold;
       border: none;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
+      padding: 10px 0;
+      margin: 0;
     }
   </style>
 </head>

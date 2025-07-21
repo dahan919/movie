@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import view.ModelAndView;
 
 public class WriteNoticeFormController implements Controller {
-
+ 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		

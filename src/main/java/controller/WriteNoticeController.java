@@ -10,7 +10,7 @@ import service.AnnouncementService;
 import view.ModelAndView;
 
 public class WriteNoticeController implements Controller {
-
+ 
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
@@ -21,7 +21,7 @@ public class WriteNoticeController implements Controller {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("a_title", a_title);
 		map.put("a_content", a_content);
-		
+		 
 		int n = AnnouncementService.getInstance().insertAnnouncement(map);
 		
 		if(n != 0) {

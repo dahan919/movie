@@ -26,7 +26,7 @@
     }
 
     .notice {
-      background: white;
+      background: white; 
       border: 1px solid #ddd;
       padding: 20px;
       border-radius: 10px;

@@ -277,6 +277,8 @@ button:hover {
       target.style.display = 'block';
      /*  if (tabName === 'notice') loadAdminNotices(); */
     }
+    document.getElementById('searchInput').value = ''
+    	  getList()
   }
 
   
@@ -293,7 +295,7 @@ button:hover {
     		
     		console.log('searchValue:',searchValue)
     		
-    		// admin.do?id=admin&pw=1234 형태
+    		// admin.do?id=admin&pw=1234 형태 
     		fetch("admin.do?search="+searchValue, {
     		  method: 'GET'
     		})
@@ -301,7 +303,7 @@ button:hover {
     		  if (!response.ok) throw new Error("HTTP error " + response.status);
     		  return response.text(); // 또는 .json()
     		})
-    		.then(res => {
+    		.then(data => {
     		
     	
     		const parsingData =JSON.parse(data)
@@ -416,9 +418,6 @@ button:hover {
     const tabName = params.get('tab') || 'member';
     showTab(tabName);
     getList()
-   
-    
-  
   };
 </script>
 
