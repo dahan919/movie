@@ -8,16 +8,10 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-<<<<<<< HEAD
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-        <property name="username" value="C##JOE"/>
-        <property name="password" value="123456"/>
-
-=======
         <property name="url" value="jdbc:oracle:thin:@nam3324.synology.me:32800:xe"/>
         <property name="username" value="c##daehanminguk"/>
         <property name="password" value="23760369"/>
->>>>>>> main
+
       </dataSource>
     </environment>
   </environments>
