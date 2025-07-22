@@ -40,17 +40,21 @@ public class DramaService {
 		return instance;
 	}
 
-	public List<DramaDTO> selectBySearch(Map<String, Object> map) {
-		return mapper.selectBySearch(map);
+	public List<DramaDTO> selectBySearch(String search) {
+		return mapper.selectBySearch(search);
 	}
 	
 	//API 받아오기
 		public static String search(String searchTxt) {
+			
+			final String API_KEY = "8ac649eda0cad7056cf27dfecd8e8b41";
 
 			String response = "";
 
 			// 1.URL setting
-			String apiURL = "";
+			String apiURL = "https://api.themoviedb.org/3/search/tv?" +
+							"api_key=" + API_KEY +
+							"&language=ko-KR";
 
 			// 1-1. convert parameter(query String) into UTF-8 form
 			try {
@@ -73,8 +77,11 @@ public class DramaService {
 				//2-3. Connection setting
 				//2-3-1. Send method(Usually given in manual)
 				//2-3-2. header setting
-				conn.setRequestMethod("");
-				conn.setRequestProperty("", );
+				conn.setRequestMethod("GET");
+				//2-3-3. connection Timeout
+				conn.setConnectTimeout(5000);
+				//2-3-4. Read Timeout
+				conn.setReadTimeout(5000);
 
 				// 3.Request
 				// 4.Request Verification
@@ -115,10 +122,11 @@ public class DramaService {
 
 				String name = obj.getString("name");
 				String overview = obj.getString("overview");
+				double voteAverage = Math.round(obj.getDouble("voteAverage")*100) /100;
 				String poster_path = obj.getString("poster_path");
 				
 				String first_air_date_str = obj.getString("first_air_date");
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date first_air_date = null;
 				try {
 					first_air_date = (Date) sdf.parse(first_air_date_str);
@@ -126,7 +134,9 @@ public class DramaService {
 					e.printStackTrace();
 				}
 				
-				DramaDTO dto = new DramaDTO(name, overview, poster_path, first_air_date);
+				double voteAverage = obj.getDouble("");
+				
+				DramaDTO dto = new DramaDTO(name, overview, poster_path, first_air_date, voteAverage);
 				
 				list.add(dto);
 			});
@@ -134,8 +144,8 @@ public class DramaService {
 			return list;
 		}
 
-		public int insertSearchResult(List<DramaDTO> list) {
-			return mapper.insertSearchResult(list);
+		public int insertSearchResult(List<DramaDTO> dlist) {
+			return mapper.insertSearchResult(dlist);
 		}
 
 		public List<MediaDTO> selectByPoster(String dramaImgUrl) {
@@ -144,6 +154,10 @@ public class DramaService {
 
 		public List<DramaDTO> selectAll() {
 			return mapper.selectAll();
+		}
+
+		public List<DramaDTO> selectByName(String name) {
+			return mapper.selectByName(name);
 		}
 
 }

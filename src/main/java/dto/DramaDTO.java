@@ -4,19 +4,22 @@ import java.sql.Date;
 
 public class DramaDTO {
 
+	//변수명 CamelToe로 수정
 	private String name;
 	private String overview;
-	private String poster_path;
-	private Date first_air_date;
+	private String posterPath;
+	private Date firstAirDate;
+	private double voteAverage;
 	
 	public DramaDTO() {}
 
-	public DramaDTO(String name, String overview, String poster_path, Date first_air_date) {
+	public DramaDTO(String name, String overview, String posterPath, Date firstAirDate, double voteAverage) {
 		super();
 		this.name = name;
 		this.overview = overview;
-		this.poster_path = poster_path;
-		this.first_air_date = first_air_date;
+		this.posterPath = posterPath;
+		this.firstAirDate = firstAirDate;
+		this.voteAverage = voteAverage;
 	}
 
 	public String getName() {
@@ -35,26 +38,35 @@ public class DramaDTO {
 		this.overview = overview;
 	}
 
-	public String getPoster_path() {
-		return poster_path;
+	public String getPosterPath() {
+		return posterPath;
 	}
 
-	public void setPoster_path(String poster_path) {
-		this.poster_path = poster_path;
+	public void setPosterPath(String posterPath) {
+		this.posterPath = posterPath;
 	}
 
-	public Date getFirst_air_date() {
-		return first_air_date;
+	public Date getFirstAirDate() {
+		return firstAirDate;
 	}
 
-	public void setFirst_air_date(Date first_air_date) {
-		this.first_air_date = first_air_date;
+	public void setFirstAirDate(Date firstAirDate) {
+		this.firstAirDate = firstAirDate;
+	}
+
+	public double getVoteAverage() {
+		return voteAverage;
+	}
+
+	public void setVoteAverage(double voteAverage) {
+		this.voteAverage = voteAverage;
 	}
 
 	@Override
 	public String toString() {
-		return "DramaDTO [name=" + name + ", overview=" + overview + ", poster_path=" + poster_path
-				+ ", first_air_date=" + first_air_date + "]";
+		return "DramaDTO [name=" + name + ", overview=" + overview + ", posterPath=" + posterPath + ", firstAirDate="
+				+ firstAirDate + ", voteAverage=" + voteAverage + "]";
 	}
+		
 	
 }

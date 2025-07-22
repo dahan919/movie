@@ -6,10 +6,7 @@
 	<select id="selectBySearch">
   	select *
   	from media
-  	where 1=1
-  	<if test="search != null and search.trim() != ''"> 
-  	and (TITLE LIKE '%' || #{search} || '%')
-  	</if>
+  	where title LIKE '%' || #{search} || '%'
   	</select>
   	
   	<insert id="insertSearchResult" parameterType="list">
@@ -31,5 +28,13 @@
   	<select id="selectAll">
   	select *
   	from media
+  	</select>
+  	
+  	<select id="selectByTitle">
+  	select * 
+  	from media m
+  	join commentary c
+  	on m.u_num = c.u_num
+  	where title = #{title}
   	</select>
 </mapper>

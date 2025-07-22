@@ -33,30 +33,16 @@ public class AdminController implements Controller {
  
 		String search = request.getParameter("search");
 
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("search", search);
-
-		List<CommentaryDTO> commentaryList = CommentaryService.getInstance().selectBySearch(map);
-		List<AnnouncementDTO> announcementList = AnnouncementService.getInstance().selectBySearch(map);
-		List<DramaDTO> dramaList = DramaService.getInstance().selectBySearch(map);
-		List<MediaDTO> mediaList = MediaService.getInstance().selectBySearch(map);
-		List<WebtoonDTO> webtoonList = WebtoonService.getInstance().selectBySearch(map);
-		List<UserInfoDTO> userInfoList = UserInfoService.getInstance().selectBySearch(map);
+		List<CommentaryDTO> commentaryList = CommentaryService.getInstance().selectBySearch(search);
+		List<AnnouncementDTO> announcementList = AnnouncementService.getInstance().selectBySearch(search);
+		List<DramaDTO> dramaList = DramaService.getInstance().selectBySearch(search);
+		List<MediaDTO> mediaList = MediaService.getInstance().selectBySearch(search);
+		List<WebtoonDTO> webtoonList = WebtoonService.getInstance().selectBySearch(search);
+		List<UserInfoDTO> userInfoList = UserInfoService.getInstance().selectBySearch(search);
 
 		// 관리자 페이지가 일단 하나인 것으로 간주하고 작업
 		// AJAX 사용
 		// JSON 파일로 변환해서 주려고 함
-
-		// JSONArray 생성
-		JSONArray commentaryArray = new JSONArray();
-		JSONArray announcementArray = new JSONArray();
-		JSONArray contentArray = new JSONArray();
-		JSONArray userInfoArray = new JSONArray();
-
-		// List의 정보들은 하나하나 item으로 분리하고,
-		// item의 변수값들을 getter로 받은 다음
-		// JSONObject에 하나씩 넣어서 JSON 객체에 정보를 넣고
-		// JSONArray에는 JSONObject를 넣음
 
 		// Array는 크게 4개를 쓰려고 함.
 		// 1.commentaryArray: 댓글정보를 받아오는 JSONArray
@@ -72,82 +58,36 @@ public class AdminController implements Controller {
 
 		// commentaryList 작업
 		// commentaryList -> commentaryArray
-		commentaryList.forEach(commentary -> {
-			JSONObject obj = new JSONObject();
-			obj.put("c_num", commentary.getC_num());
-			obj.put("u_num", commentary.getU_num());
-			obj.put("criticism", commentary.getCriticism());
-			obj.put("score_c", commentary.getScore_c());
-			obj.put("writedate", commentary.getWritedate());
-			commentaryArray.put(obj);
-		});
+		JSONArray commentaryArray = new JSONArray(commentaryList);
+		
 
 		// announcementList 작업
 		// announcementList -> announcementArray
-		announcementList.forEach(announcement -> {
-			JSONObject obj = new JSONObject();
-			obj.put("a_num", announcement.getA_num());
-			obj.put("a_title", announcement.getA_title());
-			obj.put("a_content", announcement.getA_content());
-			obj.put("a_date", announcement.getA_date());
-			announcementArray.put(obj);
-		});
+		JSONArray announcementArray = new JSONArray(announcementList);
 
 		// dramaList 작업
-		// dramaList -> contentArray
-		dramaList.forEach(drama -> {
-			JSONObject obj = new JSONObject();
-			obj.put("name", drama.getName());
-			obj.put("overview", drama.getOverview());
-			obj.put("poster_path", drama.getPoster_path());
-			obj.put("first_air_date", drama.getFirst_air_date());
-			contentArray.put(obj);
-		});
+		// dramaList -> dramaArray
+		JSONArray dramaArray = new JSONArray(dramaList);
 
 		// mediaList 작업
-		// mediaList -> contentArray
-		mediaList.forEach(media -> {
-			JSONObject obj = new JSONObject();
-			obj.put("score", media.getScore());
-			obj.put("opendate", media.getOpendate());
-			obj.put("story", media.getStory());
-			obj.put("poster", media.getPoster());
-			obj.put("highlight", media.getHighlight());
-			obj.put("title", media.getTitle());
-			contentArray.put(obj);
-		});
+		// mediaList -> mediaArray
+		JSONArray mediaArray = new JSONArray(mediaList);
 
 		// webtoonList 작업
-		// webtoonList -> contentArray
-		webtoonList.forEach(webtoon -> {
-			JSONObject obj = new JSONObject();
-			obj.put("title", webtoon.getTitle());
-			obj.put("thumbnail", webtoon.getThumbnail());
-			obj.put("synopsis", webtoon.getSynopsis());
-			obj.put("starScoreAverage", webtoon.getStarScoreAverage());
-			obj.put("readCount", webtoon.getReadCount());
-			obj.put("linkUrl", webtoon.getLinkUrl());
-			obj.put("writingAuthorName", webtoon.getWritingAuthorName());
-			contentArray.put(obj);
-		});
+		// webtoonList -> webtoonArray
+		JSONArray webtoonArray = new JSONArray(webtoonList);
 		
 		// userInfoList 작업
 		// userInfoList -> userInfoArray
-		userInfoList.forEach(userInfo -> {
-			JSONObject obj = new JSONObject();
-			obj.put("name", userInfo.getName());
-			obj.put("nickNm", userInfo.getNickNm());
-			obj.put("passwd", userInfo.getPasswd());
-			obj.put("id", userInfo.getId());
-			obj.put("ph_num", userInfo.getPh_num());
-			userInfoArray.put(obj);
-		});
+		JSONArray userInfoArray = new JSONArray(userInfoList);
 		
 		//JSONObject에 모든 array 객체들을 다 담아서 앞단으로 보내줌
 		JSONObject arrayObject = new JSONObject();
 		arrayObject.put("commentaryArray", commentaryArray);
 		arrayObject.put("announcementArray", announcementArray);
-		arrayObject.put("contentArray", contentArray);
+		arrayObject.put("announcementArray", dramaArray);
+		arrayObject.put("announcementArray", mediaArray);
+		arrayObject.put("announcementArray", webtoonArray);
 		arrayObject.put("userInfoArray", userInfoArray);
 		
 		response.getWriter().println(arrayObject.toString());

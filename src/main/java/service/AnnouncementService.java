@@ -22,8 +22,8 @@ public class AnnouncementService {
 		return instance;
 	}
 
-	public List<AnnouncementDTO> selectBySearch(Map<String, Object> map) {
-		return mapper.selectBySearch(map);
+	public List<AnnouncementDTO> selectBySearch(String search) {
+		return mapper.selectBySearch(search);
 	}
 
 	public int insertAnnouncement(Map<String, Object> map) {

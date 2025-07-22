@@ -7,16 +7,12 @@
 	<select id="selectBySearch">
   	select *
   	from webtoon
-  		where  1=1
-  	  	<if test="search != null and search.trim() != ''">
-  	and (title LIKE '%' || #{search} || '%'
-  	or writingAuthorName LIKE '%' || #{search} || '%')
-  	</if>
+  	where title LIKE '%' || #{search} || '%'
   	</select>
   	
   	<insert id ="insertSearchResult">
-  	insert into webtoon(title, thumbnail, synopsis, starScoreAverage, readCount, linkUrl, writingAuthorName)
-  	values(#{title}, #{thumbnail}, #{synopsis}, #{starScoreAverage}, #{readCount}, #{linkUrl}, #{writingAuthorName})
+  	insert into webtoon(titleName, titleId, thumnailUrl)
+  	values(#{titleName}, #{titleId}, #{thumnailUrl})
   	</insert>
   	
   	<select id="selectByPoster">
@@ -26,6 +22,13 @@
   	
   	<select id="selectAll">
   	select * from webtoon
+  	</select>
+  	
+  	<select id="selectByTitleName">
+  	select * from webtoon w
+  	join commentary c
+  	on c.u_num = w.u_num
+  	where titleName = #{titleName}
   	</select>
   	
 </mapper>

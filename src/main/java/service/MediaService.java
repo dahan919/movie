@@ -22,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import config.DBManager;
+import dto.DramaDTO;
 import dto.MediaDTO;
 import mapper.MediaMapper;
 
@@ -29,10 +30,6 @@ public class MediaService {
 	
 	private static MediaService instance = new MediaService();
 	private MediaMapper mapper;
-	
-	//API 변수
-	private static String apiKey = "x-rapidapi-key";
-	private static String apiHost = "imdb236.p.rapidapi.com";
 
 	public MediaService() {
 		mapper = DBManager.getInstance().getSession().getMapper(MediaMapper.class);
@@ -44,8 +41,8 @@ public class MediaService {
 		return instance;
 	}
 
-	public List<MediaDTO> selectBySearch(Map<String, Object> map) {
-		return mapper.selectBySearch(map);
+	public List<MediaDTO> selectBySearch(String search) {
+		return mapper.selectBySearch(search);
 	}
 	
 	//API 받아오기: 미완
@@ -53,8 +50,12 @@ public class MediaService {
 
 			String response = "";
 
+			final String API_KEY = "8ac649eda0cad7056cf27dfecd8e8b41";
+
 			// 1.URL setting
-			String apiURL = "https://imdb236.p.rapidapi.com/api/imdb/search";
+			String apiURL = "https://api.themoviedb.org/3/search/movie?" +
+							"api_key=" + API_KEY +
+							"&language=ko-KR";
 
 			// 1-1. convert parameter(query String) into UTF-8 form
 			try {
@@ -78,8 +79,10 @@ public class MediaService {
 				//2-3-1. Send method(Usually given in manual)
 				//2-3-2. header setting
 				conn.setRequestMethod("GET");
-				conn.setRequestProperty("x-rapidapi-key", apiKey);
-				conn.setRequestProperty("x-rapidapi-host", apiHost);
+				//2-3-3. connection Timeout
+				conn.setConnectTimeout(5000);
+				//2-3-4. Read Timeout
+				conn.setReadTimeout(5000);
 
 				// 3.Request
 				// 4.Request Verification
@@ -120,26 +123,24 @@ public class MediaService {
 			array.forEach(item -> {
 				JSONObject obj = (JSONObject) item;
 		
-				Double score = obj.getDouble("score");
+				String title = obj.getString("title");
+				double voteAverage = Math.round(obj.getDouble("voteAverage")*100) /100;
+				String overview = obj.getString("overview");
+				String posterPath = obj.getString("posterPath");
 				
 				//date format으로 받기
-				String opendatestr = obj.getString("opendate");
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				Date opendate = null;
+				String releaseDatestr = obj.getString("releaseDate");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Date releaseDate = null;
 				try {
-					opendate = (Date) sdf.parse(opendatestr);
+					releaseDate = (Date) sdf.parse(releaseDatestr);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				String story = obj.getString("story");
-				String poster = obj.getString("poster");
-				String highlight = obj.getString("highlight");
-				String title = obj.getString("title");
-				
 				//DTO instance를 이 값들로 만들어주기
-				MediaDTO dto = new MediaDTO(score, opendate, story, poster, highlight, title);
+				MediaDTO dto = new MediaDTO(title, voteAverage, overview, posterPath, releaseDate);
 				
 				list.add(dto);
 			});
@@ -147,8 +148,8 @@ public class MediaService {
 			return list;
 		}
 
-		public int insertSearchResult(List<MediaDTO> mediaList) {
-			return mapper.insertSearchResult(mediaList);
+		public int insertSearchResult(List<MediaDTO> mList) {
+			return mapper.insertSearchResult(mList);
 		}
 
 		public List<MediaDTO> selectByPoster(String mediaImgUrl) {			
@@ -157,6 +158,14 @@ public class MediaService {
 
 		public List<MediaDTO> selectAll() {
 			return mapper.selectAll();
+		}
+
+		public List<MediaDTO> selectByTitle(String title) {
+			return mapper.selectByTitle(title);
+		}
+
+		public List<MediaDTO> selectByUNum(String uNum) {
+			return mapper.selectByUNum(uNum);
 		}
 		
 		

@@ -12,7 +12,7 @@ public class CategoryWFormController implements Controller {
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		
-		view = new ModelAndView("categoryW.jsp", false);
+		view = new ModelAndView("category_webtoon.jsp", false);
 		
 		return view;
 	}

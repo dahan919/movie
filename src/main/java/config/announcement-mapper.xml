@@ -6,6 +6,7 @@
   <select id="selectBySearch">
   	select *
   	from announcement
+<<<<<<< HEAD
   	where 1=1
   	<if test="search != null and search.trim() != ''"> 
   	 and (A_TITLE LIKE '%' || #{search} || '%'
@@ -13,6 +14,11 @@
    or a_title LIKE '%' || #{search} || '%')
   	</if>
   	order by a_num desc
+=======
+  	where a_title LIKE '%' || #{search} || '%'
+  	or a_content LIKE '%' || #{search} || '%'
+  	or a_title LIKE '%' || #{search} || '%'
+>>>>>>> main
   </select>
   
   <insert id="insertAnnouncement">

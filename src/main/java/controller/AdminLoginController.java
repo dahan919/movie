@@ -29,12 +29,14 @@ public class AdminLoginController implements Controller {
 		if(admin != null) {
 			
 			request.getSession().setAttribute("admin", admin);
+			request.getSession().setAttribute("msg", "로그인에 성공하였습니다.");
 			
 			//관리자 페이지 이동
 			view = new ModelAndView("admin.jsp", true);
 			
 		} else {
 			
+			request.getSession().setAttribute("msg", "로그인에 실패하였습니다.");
 			//관리자 로그인 페이지 이동
 			view = new ModelAndView("admin_login.jsp", false);
 		}

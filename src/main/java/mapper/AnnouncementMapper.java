@@ -7,7 +7,7 @@ import dto.AnnouncementDTO;
 
 public interface AnnouncementMapper {
 
-	List<AnnouncementDTO> selectBySearch(Map<String, Object> map);
+	List<AnnouncementDTO> selectBySearch(String search);
 
 	int insertAnnouncement(Map<String, Object> map);
 	
