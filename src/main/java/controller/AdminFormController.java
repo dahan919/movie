@@ -7,8 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import view.ModelAndView;
 
 public class AdminFormController implements Controller {
-
-	@Override
+ 
+	@Override 
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
 		

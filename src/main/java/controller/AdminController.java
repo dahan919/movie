@@ -30,7 +30,7 @@ public class AdminController implements Controller {
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView view = null;
-
+ 
 		String search = request.getParameter("search");
 
 		List<CommentaryDTO> commentaryList = CommentaryService.getInstance().selectBySearch(search);

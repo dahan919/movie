@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
+<!DOCTYPE mapper  
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.AdminMapper">
   <select id="selectByID" parameterType="map" resultType="int">
     select id, passwd from admin 
-    where id = #{id} and passwd = #{passwd} 
+    where id = #{id} and passwd = #{passwd}  
   </select>
 </mapper>

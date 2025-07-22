@@ -6,12 +6,12 @@ import java.util.Map;
 import config.DBManager;
 import dto.AnnouncementDTO;
 import mapper.AnnouncementMapper;
-
+ 
 public class AnnouncementService {
 
 	private static AnnouncementService instance = new AnnouncementService();
 	private AnnouncementMapper mapper;
-
+ 
 	public AnnouncementService() {
 		mapper = DBManager.getInstance().getSession().getMapper(AnnouncementMapper.class);
 	}
@@ -28,6 +28,10 @@ public class AnnouncementService {
 
 	public int insertAnnouncement(Map<String, Object> map) {
 		return mapper.insertAnnouncement(map);
+	}
+	
+	public String deleteAnnouncement(Map<String, Object> map) {
+		return mapper.deleteAnnouncement(map);
 	}
 
 	public List<AnnouncementDTO> selectAll() {

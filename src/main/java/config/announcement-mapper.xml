@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="mapper.AnnouncementMapper">
   <select id="selectBySearch">
   	select *
   	from announcement
+<<<<<<< HEAD
+  	where 1=1
+  	<if test="search != null and search.trim() != ''"> 
+  	 and (A_TITLE LIKE '%' || #{search} || '%'
+   or a_content LIKE '%' || #{search} || '%'
+   or a_title LIKE '%' || #{search} || '%')
+  	</if>
+  	order by a_num desc
+=======
   	where a_title LIKE '%' || #{search} || '%'
   	or a_content LIKE '%' || #{search} || '%'
   	or a_title LIKE '%' || #{search} || '%'
+>>>>>>> main
   </select>
   
   <insert id="insertAnnouncement">
-  	insert into announcement(a_title,a_content)
-  	values (#{a_title},#{a_content})
-  </insert>
+insert into announcement(a_title, a_content, a_date)
+values (#{a_title}, #{a_content}, SYSDATE)
+</insert>
   
   <select id="selectAll">
   	select * from announcement
+  	order by a_num desc
   </select>
+  
+  <delete id="deleteAnnouncement" parameterType="map">
+  delete from announcement
+where a_num = #{a_num}
+  </delete>
+  
 </mapper>

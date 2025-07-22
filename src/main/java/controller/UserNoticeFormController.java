@@ -6,14 +6,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import view.ModelAndView;
 
-public class WriteNoticeFormController implements Controller {
+public class UserNoticeFormController implements Controller {
  
 	@Override
 	public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		ModelAndView view = new ModelAndView("notice.jsp", false);
-		
-		return view;
+		ModelAndView view = new ModelAndView("user-notice.jsp", false);
+		return view; 
 	}
 
 }
